@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mi-plataforma-v18';
+const CACHE_NAME = 'mi-plataforma-v18b';
 const FILES_TO_CACHE = [
   './', './index.html',
   './manifest.webmanifest', './icon-192.png', './icon-512.png',

@@ -6174,157 +6174,252 @@ const BL = [
 // Cada semana incluye componente DIDÁCTICO: cómo explicarlo a estudiantes.
 // ============================================================
 const DEX = [
+  // ============================================================
+  // RECURSOS BASE DEL CURSO (verificados, abiertos, sin login):
+  // - Penn State STAT 502 (ANOVA + DOE, posgrado, CC BY-NC): https://online.stat.psu.edu/stat502/
+  // - Penn State STAT 500 (estadística aplicada base): https://online.stat.psu.edu/stat500/
+  // - Penn State STAT 501 (regresión): https://online.stat.psu.edu/stat501/
+  // - Penn State STAT 503 (DOE enfoque Montgomery): https://online.stat.psu.edu/stat503/
+  // - NIST/SEMATECH e-Handbook: https://www.itl.nist.gov/div898/handbook/
+  // - MIT OCW 18.05 Intro Probability & Statistics: https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/
+  // - OpenIntro Statistics (libro gratis real): https://www.openintro.org/book/os/
+  // - Handbook of Biological Statistics (McDonald): http://www.biostathandbook.com/
+  // - rcompanion (Mangiafico, R aplicado): https://rcompanion.org/handbook/
+  // - agricolae tutorial (DOE agropecuario en R): https://cran.r-project.org/web/packages/agricolae/vignettes/tutorial.pdf
+  // - StatQuest (Josh Starmer, videos): https://www.youtube.com/@statquest
+  // - Seeing Theory (Brown, visual): https://seeing-theory.brown.edu/
+  // - Khan Academy español: https://es.khanacademy.org/math/statistics-probability
+  // ============================================================
+
   // ==== FASE 1 · SEMANAS 1-4: Bases estadísticas sólidas ====
-  { week:1, phase:"Fase 1 · Bases estadísticas", title:"Semana 1 — Estadística descriptiva y probabilidad (repaso profesor)",
-    goals:["Dominar bases que darás por sentadas al enseñar", "Distribuciones fundamentales", "Setup R + RStudio + InfoStat"],
+  { week:1, phase:"Fase 1 · Bases estadísticas", title:"Semana 1 — Estadística descriptiva y probabilidad",
+    goals:["Dominar las bases que darás por sentadas", "Distribuciones fundamentales", "Setup R + RStudio + InfoStat"],
     days:[
-      { skill:"theory", title:"Estadística descriptiva — lo que un profesor NO puede dudar", task:"Repaso sólido: medidas de tendencia central (media, mediana, moda), dispersión (varianza, DE, CV, rango, IQR), forma (asimetría, curtosis). Poblacional vs muestral (n vs n-1 — Bessel). Como profesor DEBES explicar POR QUÉ n-1 (grados de libertad). Practica la explicación intuitiva del sesgo de la varianza muestral.", duration:70, resources:[
-        { label:"Montgomery — Diseño y Análisis de Experimentos (cap 2)", url:"https://www.academia.edu/40573222/Dise%C3%B1o_y_an%C3%A1lisis_de_experimentos_Douglas_Montgomery" },
-        { label:"Gutiérrez & De la Vara — Análisis y diseño de experimentos", url:"https://www.academia.edu/37886443/An%C3%A1lisis_y_dise%C3%B1o_de_experimentos_Gutierrez_Pulido" },
+      { skill:"theory", title:"Estadística descriptiva — lo que un profesor NO puede dudar", task:"Repaso sólido: tendencia central (media, mediana, moda), dispersión (varianza, DE, CV, rango, IQR), forma (asimetría, curtosis). Poblacional vs muestral. Como profesor debes explicar POR QUÉ se divide entre n-1 (grados de libertad). Lee la sección 1 de OpenIntro (libro gratis, excelente) y la lección 1 de Penn State STAT 500.", duration:70, resources:[
+        { label:"OpenIntro Statistics (libro completo gratis PDF)", url:"https://www.openintro.org/book/os/" },
+        { label:"Penn State STAT 500 — Lesson 1 (Descriptive)", url:"https://online.stat.psu.edu/stat500/lesson/1" },
+        { label:"Khan Academy — Estadística descriptiva (español)", url:"https://es.khanacademy.org/math/statistics-probability/summarizing-quantitative-data" },
       ]},
-      { skill:"theory", title:"Distribuciones de probabilidad fundamentales", task:"Las que USARÁS todo el curso: Normal (Gauss), t-Student (muestras pequeñas), Chi-cuadrado (varianzas, independencia), F-Snedecor (razón de varianzas — CORAZÓN del ANOVA). Para cada una: forma, parámetros, cuándo aparece. La distribución F es la más importante para diseño experimental — domínala.", duration:75, resources:[
-        { label:"Distribuciones — Khan Academy (español)", url:"https://es.khanacademy.org/math/statistics-probability" },
+      { skill:"theory", title:"Distribuciones de probabilidad fundamentales", task:"Las que usarás todo el curso: Normal, t-Student (muestras pequeñas), Chi-cuadrado (varianzas, independencia), F-Snedecor (razón de varianzas — CORAZÓN del ANOVA). Para cada una: forma, parámetros, cuándo aparece. La F es la más importante para DOE. MIT OCW 18.05 tiene lecturas claras. StatQuest tiene videos visuales excelentes.", duration:75, resources:[
+        { label:"MIT OCW 18.05 — Reading materials (probability & distributions)", url:"https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/pages/readings/" },
+        { label:"Penn State STAT 500 — Lesson 3 (Probability distributions)", url:"https://online.stat.psu.edu/stat500/lesson/3" },
+        { label:"StatQuest — The Normal Distribution (video)", url:"https://www.youtube.com/watch?v=rzFX5NWojp0" },
       ]},
-      { skill:"code", title:"Setup R + RStudio + InfoStat (herramientas del curso)", task:"R + RStudio (gratuito, potente, lo usaba el profesor anterior — sus scripts .R lo confirman). InfoStat (interfaz amigable, muy usado en agronomía LATAM, gratis versión estudiantil). Instala ambos. `install.packages(c('agricolae','ExpDes','emmeans','car','multcomp','ggplot2','dplyr'))`. agricolae es LA librería de diseño experimental agropecuario.", duration:65, resources:[
-        { label:"R Project", url:"https://www.r-project.org/" },
-        { label:"InfoStat", url:"https://www.infostat.com.ar/" },
-        { label:"agricolae package (clave)", url:"https://cran.r-project.org/web/packages/agricolae/agricolae.pdf" },
+      { skill:"code", title:"Setup R + RStudio + InfoStat (herramientas del curso)", task:"Instala R + RStudio (gratuito, lo usaba el profesor anterior — sus scripts .R lo confirman). InfoStat (interfaz amigable, gratis versión estudiantil, muy usado en agronomía LATAM). Instala paquetes: `install.packages(c('agricolae','ExpDes','emmeans','car','multcomp','ggplot2','dplyr','nortest'))`. agricolae es LA librería de diseño experimental agropecuario.", duration:65, resources:[
+        { label:"R Project (descarga)", url:"https://www.r-project.org/" },
+        { label:"RStudio Desktop (descarga)", url:"https://posit.co/download/rstudio-desktop/" },
+        { label:"InfoStat (descarga)", url:"https://www.infostat.com.ar/" },
+        { label:"agricolae tutorial oficial (PDF)", url:"https://cran.r-project.org/web/packages/agricolae/vignettes/tutorial.pdf" },
       ]},
-      { skill:"code", title:"Primeros pasos en R — vectores, data.frames, lectura de datos", task:"Práctica: crear vectores, data.frames, importar CSV/Excel. Funciones base: mean(), sd(), var(), summary(), table(). Genera estadística descriptiva de un dataset agropecuario (rendimiento de cultivos ejemplo). Esto es lo PRIMERO que enseñarás — domínalo con fluidez para demostrarlo en vivo.", duration:60, resources:[
-        { label:"R for Data Science (Wickham)", url:"https://es.r4ds.hadley.nz/" },
+      { skill:"code", title:"Primeros pasos en R — vectores, data.frames, importar datos", task:"Práctica: crear vectores, data.frames, importar CSV/Excel. Funciones base: mean(), sd(), var(), summary(), table(). Genera estadística descriptiva de un dataset agropecuario. Esto es lo PRIMERO que enseñarás — domínalo con fluidez para demostrarlo en vivo. R for Data Science (Wickham, gratis en español) es la mejor referencia.", duration:60, resources:[
+        { label:"R for Data Science (Wickham) — versión español gratis", url:"https://es.r4ds.hadley.nz/" },
+        { label:"rcompanion — R básico para estadística", url:"https://rcompanion.org/handbook/" },
       ]},
-      { skill:"teaching", title:"DIDÁCTICA: cómo iniciar el curso con tus estudiantes", task:"Prepara tu PRIMERA clase: (1) Motivación — por qué la estadística es vital en agropecuaria (mejorar rendimientos, validar tratamientos). (2) Ejemplo real que enganche (¿este fertilizante realmente funciona o fue azar?). (3) Panorama del curso. Diseña 3 slides mentales + 1 ejemplo memorable. Un buen profesor ENGANCHA en los primeros 10 minutos.", duration:50, resources:[]},
+      { skill:"teaching", title:"DIDÁCTICA: cómo iniciar el curso con tus estudiantes", task:"Prepara tu PRIMERA clase: (1) Motivación — por qué la estadística es vital en agropecuaria (mejorar rendimientos, validar tratamientos). (2) Ejemplo real que enganche (¿este fertilizante realmente funciona o fue azar?). (3) Panorama del curso. Diseña 3 slides + 1 ejemplo memorable. Un buen profesor engancha en los primeros 10 minutos.", duration:50, resources:[
+        { label:"Seeing Theory (Brown) — inspiración visual para enseñar", url:"https://seeing-theory.brown.edu/" },
+      ]},
     ]},
   { week:2, phase:"Fase 1 · Bases estadísticas", title:"Semana 2 — Distribuciones muestrales y estimación",
     goals:["Teorema del Límite Central", "Estimación puntual e intervalos", "Cómo explicarlo con claridad"],
     days:[
-      { skill:"theory", title:"Teorema del Límite Central (TLC) — el pilar", task:"TLC: la distribución de la media muestral tiende a Normal cuando n crece, INDEPENDIENTE de la distribución original. Es POR ESTO que la inferencia funciona. Como profesor: debes explicarlo con simulación visual (medias de muestras de una distribución sesgada → histograma normal). Es el concepto que MÁS cuesta a estudiantes.", duration:75, resources:[
-        { label:"CLT visual (Seeing Theory)", url:"https://seeing-theory.brown.edu/probability-distributions/index.html" },
+      { skill:"theory", title:"Teorema del Límite Central (TLC) — el pilar", task:"TLC: la distribución de la media muestral tiende a Normal cuando n crece, INDEPENDIENTE de la distribución original. Es POR ESTO que la inferencia funciona. Como profesor debes explicarlo con simulación visual. Es el concepto que MÁS cuesta a estudiantes. Seeing Theory tiene una animación interactiva perfecta para mostrar en clase.", duration:75, resources:[
+        { label:"Seeing Theory — Central Limit Theorem (interactivo)", url:"https://seeing-theory.brown.edu/probability-distributions/index.html" },
+        { label:"Penn State STAT 500 — Lesson 4 (Sampling distributions)", url:"https://online.stat.psu.edu/stat500/lesson/4" },
+        { label:"StatQuest — The Central Limit Theorem (video)", url:"https://www.youtube.com/watch?v=YAlJCEDH2uY" },
       ]},
-      { skill:"code", title:"Demostrar TLC con simulación en R", task:"Script R: toma distribución exponencial (muy sesgada). Extrae 1000 muestras de n=5, 30, 100. Grafica histograma de las medias. Muestra cómo se vuelve normal con n creciente. GUARDA este script — lo usarás en clase para demostrar TLC en vivo. La demostración visual convence más que la fórmula.", duration:80, resources:[]},
-      { skill:"theory", title:"Estimación puntual e intervalos de confianza", task:"Estimador puntual (media muestral estima media poblacional). Intervalo de confianza: media ± t(α/2, gl) × EE. Interpretación CORRECTA (95% de intervalos construidos así contienen el parámetro — NO 'hay 95% de probabilidad'). Este error de interpretación lo cometen 90% — como profesor debes enseñarlo bien.", duration:65, resources:[]},
-      { skill:"code", title:"IC en R + interpretación", task:"`t.test(x)$conf.int` da IC de la media. Calcula IC 95% para dataset de rendimiento. Interpreta correctamente. Practica varios ejemplos con distintos n y niveles de confianza. Observa cómo el IC se angosta con más n.", duration:55, resources:[]},
-      { skill:"teaching", title:"DIDÁCTICA: la analogía correcta para IC", task:"Diseña una analogía memorable para intervalo de confianza. Ejemplo bueno: 'pescar con red' (el pez es el parámetro, la red es el intervalo — 95% de las veces que lanzas la red atrapas el pez, pero para UN lance específico, o está o no está). Prepara tu propia analogía que TÚ puedas explicar con naturalidad.", duration:50, resources:[]},
+      { skill:"code", title:"Demostrar TLC con simulación en R", task:"Script R: toma distribución exponencial (muy sesgada). Extrae 1000 muestras de n=5, 30, 100. Grafica histograma de las medias — se vuelve normal con n creciente. GUARDA este script — lo usarás en clase para demostrar TLC en vivo. La demostración visual convence más que la fórmula. Código base: `medias <- replicate(1000, mean(rexp(n)))`.", duration:80, resources:[
+        { label:"rcompanion — simulación en R", url:"https://rcompanion.org/handbook/" },
+      ]},
+      { skill:"theory", title:"Estimación puntual e intervalos de confianza", task:"Estimador puntual (media muestral estima media poblacional). IC: media ± t(α/2, gl) × EE. Interpretación CORRECTA (95% de intervalos construidos así contienen el parámetro — NO 'hay 95% de probabilidad de que el parámetro esté aquí'). Este error de interpretación lo cometen 90% — como profesor debes enseñarlo bien.", duration:65, resources:[
+        { label:"Penn State STAT 500 — Lesson 5 (Confidence intervals)", url:"https://online.stat.psu.edu/stat500/lesson/5" },
+        { label:"MIT OCW 18.05 — Confidence intervals (reading + slides)", url:"https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/pages/class-slides/" },
+      ]},
+      { skill:"code", title:"IC en R + interpretación", task:"`t.test(x)$conf.int` da IC de la media. Calcula IC 95% para dataset de rendimiento. Interpreta correctamente. Practica con distintos n y niveles de confianza. Observa cómo el IC se angosta con más n. La sección de rcompanion sobre IC tiene ejemplos claros con código.", duration:55, resources:[
+        { label:"rcompanion — Confidence intervals", url:"https://rcompanion.org/handbook/C_03.html" },
+      ]},
+      { skill:"teaching", title:"DIDÁCTICA: la analogía correcta para IC", task:"Diseña una analogía memorable para IC. Ejemplo bueno: 'pescar con red' (el pez es el parámetro, la red es el intervalo — 95% de las veces que lanzas la red atrapas el pez, pero para UN lance específico, o está o no está). Prepara tu propia analogía que TÚ puedas explicar con naturalidad.", duration:50, resources:[]},
     ]},
   { week:3, phase:"Fase 1 · Bases estadísticas", title:"Semana 3 — Pruebas de hipótesis (Folio 2 del sílabo)",
     goals:["Lógica de pruebas de hipótesis", "Errores tipo I y II, potencia", "p-value bien entendido"],
     days:[
-      { skill:"theory", title:"Lógica de la prueba de hipótesis — el razonamiento", task:"H0 (nula, 'no hay efecto') vs H1 (alternativa). Asumimos H0, calculamos probabilidad de los datos bajo H0 (p-value). Si muy improbable → rechazamos H0. Es razonamiento por CONTRADICCIÓN (como reducción al absurdo). Como profesor: la lógica es lo que cuesta, no las fórmulas. Domina la EXPLICACIÓN del razonamiento.", duration:75, resources:[
-        { label:"Montgomery cap 2 — hipótesis", url:"https://www.academia.edu/40573222/Dise%C3%B1o_y_an%C3%A1lisis_de_experimentos_Douglas_Montgomery" },
+      { skill:"theory", title:"Lógica de la prueba de hipótesis — el razonamiento", task:"H0 (nula, 'no hay efecto') vs H1 (alternativa). Asumimos H0, calculamos probabilidad de los datos bajo H0 (p-value). Si muy improbable → rechazamos H0. Es razonamiento por CONTRADICCIÓN. Como profesor: la lógica es lo que cuesta, no las fórmulas. Domina la EXPLICACIÓN del razonamiento. MIT OCW 18.05 y Penn State lo tratan rigurosamente.", duration:75, resources:[
+        { label:"Penn State STAT 500 — Lesson 6a (Hypothesis testing)", url:"https://online.stat.psu.edu/stat500/lesson/6a" },
+        { label:"MIT OCW 18.05 — Null Hypothesis Significance Testing (slides)", url:"https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/pages/class-slides/" },
+        { label:"StatQuest — Hypothesis Testing and p-values (video)", url:"https://www.youtube.com/watch?v=0oc49DyA3hU" },
       ]},
-      { skill:"theory", title:"Errores tipo I (α) y tipo II (β), potencia (1-β)", task:"Tipo I: rechazar H0 verdadera (falso positivo, controlado por α=0.05). Tipo II: no rechazar H0 falsa (falso negativo, β). Potencia = 1-β = capacidad de detectar efecto real. Trade-off. Tabla 2x2 (realidad vs decisión). Como profesor: la analogía del juicio (inocente hasta prueba contraria) funciona perfecto aquí.", duration:65, resources:[]},
-      { skill:"theory", title:"p-value — qué ES y qué NO ES (crítico para profesor)", task:"p-value = P(datos tan o más extremos | H0 verdadera). NO es P(H0 verdadera). NO es probabilidad de error. NO mide tamaño del efecto. El ASA Statement 2016 alerta sobre malinterpretación masiva. Como profesor SERIO, enseña bien esto — la mayoría de profesores lo enseñan MAL. Aquí te diferencias.", duration:60, resources:[
-        { label:"ASA Statement on p-values", url:"https://www.tandfonline.com/doi/full/10.1080/00031305.2016.1154108" },
+      { skill:"theory", title:"Errores tipo I (α) y tipo II (β), potencia (1-β)", task:"Tipo I: rechazar H0 verdadera (falso positivo, controlado por α=0.05). Tipo II: no rechazar H0 falsa (falso negativo, β). Potencia = 1-β = capacidad de detectar efecto real. Trade-off. Tabla 2x2 (realidad vs decisión). La analogía del juicio (inocente hasta prueba contraria) funciona perfecto aquí. NIST Handbook lo explica claro.", duration:65, resources:[
+        { label:"NIST Handbook — Type I and Type II errors", url:"https://www.itl.nist.gov/div898/handbook/prc/section1/prc14.htm" },
+        { label:"Penn State STAT 500 — Lesson 6b (Errors and power)", url:"https://online.stat.psu.edu/stat500/lesson/6b" },
       ]},
-      { skill:"code", title:"Pruebas t en R: una muestra, dos muestras, pareada", task:"`t.test()`: una muestra (vs valor referencia), dos muestras independientes (comparar 2 tratamientos), pareada (antes/después). Supuestos de cada una. Practica con datos agropecuarios. Interpreta resultados completos (estadístico t, gl, p-value, IC).", duration:70, resources:[]},
-      { skill:"teaching", title:"DIDÁCTICA: ejercicios graduados para tus estudiantes", task:"Diseña 3 ejercicios de pruebas de hipótesis con dificultad creciente para tus alumnos: (1) simple y guiado, (2) intermedio, (3) aplicado a problema real agropecuario. El sílabo indica 'Aprendizaje Basado en Problemas' — prepara problemas REALES (¿el nuevo alimento mejora peso de pollos?). Buenos problemas = buen aprendizaje.", duration:55, resources:[]},
+      { skill:"theory", title:"p-value — qué ES y qué NO ES (crítico para profesor)", task:"p-value = P(datos tan o más extremos | H0 verdadera). NO es P(H0 verdadera). NO es probabilidad de error. NO mide tamaño del efecto. El ASA Statement 2016 alerta sobre malinterpretación masiva. Como profesor SERIO, enseña bien esto — la mayoría lo enseña MAL. Aquí te diferencias. Lee el statement oficial de la American Statistical Association.", duration:60, resources:[
+        { label:"ASA Statement on p-values (2016, oficial)", url:"https://www.amstat.org/asa/files/pdfs/p-valuestatement.pdf" },
+        { label:"StatQuest — p-values clearly explained (video)", url:"https://www.youtube.com/watch?v=vemZtEM63GY" },
+      ]},
+      { skill:"code", title:"Pruebas t en R: una muestra, dos muestras, pareada", task:"`t.test()`: una muestra (vs valor referencia), dos muestras independientes (comparar 2 tratamientos), pareada (antes/después). Supuestos de cada una. Practica con datos agropecuarios. Interpreta resultados completos (estadístico t, gl, p-value, IC). rcompanion tiene ejemplos con código listo.", duration:70, resources:[
+        { label:"rcompanion — t-test en R", url:"https://rcompanion.org/rcompanion/d_02.html" },
+        { label:"Handbook of Biological Statistics — Student's t-test", url:"http://www.biostathandbook.com/twosamplettest.html" },
+      ]},
+      { skill:"teaching", title:"DIDÁCTICA: ejercicios graduados para tus estudiantes", task:"Diseña 3 ejercicios de pruebas de hipótesis con dificultad creciente: (1) simple y guiado, (2) intermedio, (3) aplicado a problema real agropecuario. El sílabo indica 'Aprendizaje Basado en Problemas' — prepara problemas REALES (¿el nuevo alimento mejora peso de pollos?). Buenos problemas = buen aprendizaje.", duration:55, resources:[]},
     ]},
   { week:4, phase:"Fase 1 · Bases estadísticas", title:"Semana 4 — Pruebas de normalidad y supuestos (Folio 3)",
     goals:["Normalidad: Shapiro-Wilk, K-S, Anderson-Darling", "Homocedasticidad: Levene, Bartlett", "Qué hacer si se violan"],
     days:[
-      { skill:"theory", title:"Por qué la normalidad importa (y cuándo NO tanto)", task:"ANOVA y pruebas t asumen normalidad de RESIDUALES (no de datos crudos — error común). Con n grande, TLC protege (robustez). Con n pequeño, importa más. Como profesor: aclara que se evalúa normalidad de RESIDUALES post-modelo, no de datos originales. Distinción que muchos textos explican mal.", duration:65, resources:[]},
+      { skill:"theory", title:"Por qué la normalidad importa (y cuándo NO tanto)", task:"ANOVA y pruebas t asumen normalidad de RESIDUALES (no de datos crudos — error común). Con n grande, TLC protege (robustez). Con n pequeño, importa más. Como profesor: aclara que se evalúa normalidad de RESIDUALES post-modelo. Penn State STAT 502 Lesson 3.2 (Assumptions and Diagnostics) es la referencia exacta.", duration:65, resources:[
+        { label:"Penn State STAT 502 — 3.2 Assumptions and Diagnostics", url:"https://online.stat.psu.edu/stat502/lesson/3/3.2" },
+        { label:"NIST Handbook — Assumptions for ANOVA", url:"https://www.itl.nist.gov/div898/handbook/prc/section4/prc433.htm" },
+      ]},
       { skill:"theory", title:"Pruebas de normalidad: cuál usar", task:"SHAPIRO-WILK: la más potente para n<50, la preferida. KOLMOGOROV-SMIRNOV (con corrección Lilliefors): n grande. ANDERSON-DARLING: sensible a colas. Q-Q plot: inspección VISUAL (a veces más informativa que la prueba). Como profesor: enseña que la prueba + el gráfico juntos, no solo el p-value.", duration:60, resources:[
-        { label:"Normalidad en R", url:"https://cran.r-project.org/web/packages/nortest/nortest.pdf" },
+        { label:"Handbook of Biological Statistics — Normality", url:"http://www.biostathandbook.com/normality.html" },
+        { label:"NIST Handbook — Anderson-Darling and normality tests", url:"https://www.itl.nist.gov/div898/handbook/eda/section3/eda35e.htm" },
       ]},
-      { skill:"code", title:"Pruebas de normalidad + homocedasticidad en R", task:"`shapiro.test(residuals(modelo))`. `qqnorm()` + `qqline()`. Homogeneidad de varianzas: `bartlett.test()` (asume normalidad), `leveneTest()` (car package, robusto). Practica el flujo completo: ajustar modelo → extraer residuales → probar supuestos.", duration:75, resources:[]},
-      { skill:"theory", title:"Qué hacer cuando se violan supuestos", task:"NO normalidad: transformaciones (log, raíz, Box-Cox), o pruebas no-paramétricas (Kruskal-Wallis en vez de ANOVA, Wilcoxon en vez de t). NO homocedasticidad: Welch ANOVA, transformaciones, GLM. Como profesor debes tener el ÁRBOL DE DECISIÓN claro: supuesto violado → alternativa. Prepara un diagrama.", duration:65, resources:[
-        { label:"Box-Cox transformation", url:"https://www.statisticshowto.com/box-cox-transformation/" },
+      { skill:"code", title:"Pruebas de normalidad + homocedasticidad en R", task:"`shapiro.test(residuals(modelo))`. `qqnorm()` + `qqline()`. Homogeneidad de varianzas: `bartlett.test()` (asume normalidad), `car::leveneTest()` (robusto). Practica el flujo: ajustar modelo → extraer residuales → probar supuestos. rcompanion tiene todo el código.", duration:75, resources:[
+        { label:"rcompanion — Normality and homogeneity tests", url:"https://rcompanion.org/rcompanion/d_01.html" },
       ]},
-      { skill:"teaching", title:"DIDÁCTICA: el flujo de validación como checklist", task:"Diseña un CHECKLIST visual que darás a tus estudiantes: '5 pasos para validar tu ANOVA'. (1) Ajustar modelo. (2) Normalidad de residuales (Shapiro + Q-Q). (3) Homocedasticidad (Levene). (4) Independencia (gráfico residuales vs orden). (5) Outliers (residuales estandarizados). Un checklist claro reduce errores de estudiantes y te posiciona como profesor organizado.", duration:50, resources:[]},
+      { skill:"theory", title:"Qué hacer cuando se violan supuestos", task:"NO normalidad: transformaciones (log, raíz, Box-Cox), o pruebas no-paramétricas (Kruskal-Wallis en vez de ANOVA). NO homocedasticidad: Welch ANOVA, transformaciones, GLM. Como profesor debes tener el ÁRBOL DE DECISIÓN claro: supuesto violado → alternativa. NIST explica las transformaciones Box-Cox.", duration:65, resources:[
+        { label:"NIST Handbook — Box-Cox transformation", url:"https://www.itl.nist.gov/div898/handbook/pmc/section5/pmc52.htm" },
+        { label:"rcompanion — Transforming data", url:"https://rcompanion.org/handbook/I_12.html" },
+      ]},
+      { skill:"teaching", title:"DIDÁCTICA: el flujo de validación como checklist", task:"Diseña un CHECKLIST visual para tus estudiantes: '5 pasos para validar tu ANOVA'. (1) Ajustar modelo. (2) Normalidad de residuales (Shapiro + Q-Q). (3) Homocedasticidad (Levene). (4) Independencia (residuales vs orden). (5) Outliers (residuales estandarizados). Un checklist claro reduce errores y te posiciona como profesor organizado.", duration:50, resources:[]},
     ]},
 
   // ==== FASE 2 · SEMANAS 5-7: ANOVA — el corazón ====
   { week:5, phase:"Fase 2 · ANOVA fundamentos", title:"Semana 5 — ANOVA de una vía (ANAVAR, Folio 5)",
     goals:["Lógica del ANOVA — descomposición de varianza", "Tabla ANOVA completa", "Interpretación del F"],
     days:[
-      { skill:"theory", title:"La idea genial del ANOVA — Fisher", task:"ANOVA (Fisher 1920s): compara MEDIAS de 3+ grupos analizando VARIANZAS. Descompone variabilidad total en: ENTRE grupos (efecto tratamiento) + DENTRO grupos (error). Si varianza entre >> varianza dentro → tratamientos difieren. Razón F = MS_entre/MS_dentro. Como profesor: la INTUICIÓN (por qué analizar varianzas para comparar medias) es lo genial que debes transmitir.", duration:80, resources:[
-        { label:"Montgomery cap 3 — ANOVA de un factor", url:"https://www.academia.edu/40573222/Dise%C3%B1o_y_an%C3%A1lisis_de_experimentos_Douglas_Montgomery" },
+      { skill:"theory", title:"La idea genial del ANOVA — Fisher", task:"ANOVA (Fisher): compara MEDIAS de 3+ grupos analizando VARIANZAS. Descompone variabilidad total en: ENTRE grupos (efecto tratamiento) + DENTRO grupos (error). Si varianza entre >> varianza dentro → tratamientos difieren. Razón F = MS_entre/MS_dentro. Penn State STAT 502 Lesson 2 es la mejor explicación online que existe.", duration:80, resources:[
+        { label:"Penn State STAT 502 — Lesson 2 (ANOVA Foundations)", url:"https://online.stat.psu.edu/stat502/lesson/2" },
+        { label:"NIST Handbook — One-way ANOVA", url:"https://www.itl.nist.gov/div898/handbook/prc/section4/prc43.htm" },
+        { label:"StatQuest — ANOVA clearly explained (video)", url:"https://www.youtube.com/watch?v=0Vj2V2qRU10" },
       ]},
-      { skill:"theory", title:"La tabla ANOVA — anatomía completa", task:"Fuentes de variación: Tratamientos, Error, Total. Por cada una: SC (suma cuadrados), gl (grados libertad), CM (cuadrado medio = SC/gl), F (CM_trat/CM_error), p-value. Aprende a construirla A MANO (para entender) y en R (para aplicar). Como profesor debes poder derivar cada celda en el pizarrón.", duration:75, resources:[]},
-      { skill:"code", title:"ANOVA de una vía en R — aov() y lm()", task:"`modelo <- aov(rendimiento ~ tratamiento, data=d)`. `summary(modelo)`. También `anova(lm(...))`. Interpretar tabla. Practica con dataset de tratamientos (ej: 4 fertilizantes sobre rendimiento). Verifica supuestos (Fase 1). Es el análisis MÁS común que enseñarás.", duration:70, resources:[]},
-      { skill:"code", title:"ANOVA a mano en R — para entender las fórmulas", task:"Calcula SC_total, SC_tratamientos, SC_error MANUALMENTE en R (con sumatorias). Compara con aov(). Coincidencia = entendiste. Este ejercicio es EXCELENTE para tus clases — muestra qué hace R por dentro, desmitifica la 'caja negra'.", duration:65, resources:[]},
-      { skill:"teaching", title:"DIDÁCTICA: enseñar ANOVA sin abrumar", task:"El ANOVA abruma a estudiantes por las fórmulas. Estrategia: (1) Primero la INTUICIÓN (varianza entre vs dentro, con gráfico de puntos). (2) Luego UN ejemplo numérico pequeño (3 grupos, 3 datos c/u) calculado a mano. (3) Después R para casos grandes. (4) SIEMPRE interpretar en contexto agropecuario. Nunca empieces por las fórmulas.", duration:55, resources:[]},
+      { skill:"theory", title:"La tabla ANOVA — anatomía completa", task:"Fuentes: Tratamientos, Error, Total. Por cada una: SC (suma cuadrados), gl (grados libertad), CM (cuadrado medio = SC/gl), F (CM_trat/CM_error), p-value. Aprende a construirla A MANO (para entender) y en R (para aplicar). Como profesor debes poder derivar cada celda en el pizarrón. Penn State 2.2 lo desglosa.", duration:75, resources:[
+        { label:"Penn State STAT 502 — 2.2 (ANOVA table)", url:"https://online.stat.psu.edu/stat502/lesson/2/2.2" },
+      ]},
+      { skill:"code", title:"ANOVA de una vía en R — aov() y lm()", task:"`modelo <- aov(rendimiento ~ tratamiento, data=d)`. `summary(modelo)`. También `anova(lm(...))`. Interpretar tabla. Practica con dataset de tratamientos (ej: 4 fertilizantes sobre rendimiento). Verifica supuestos. Es el análisis MÁS común que enseñarás. El tutorial de agricolae tiene ejemplos agropecuarios.", duration:70, resources:[
+        { label:"agricolae tutorial — ANOVA agropecuario (PDF)", url:"https://cran.r-project.org/web/packages/agricolae/vignettes/tutorial.pdf" },
+        { label:"rcompanion — One-way ANOVA", url:"https://rcompanion.org/rcompanion/d_05.html" },
+      ]},
+      { skill:"code", title:"ANOVA a mano en R — para entender las fórmulas", task:"Calcula SC_total, SC_tratamientos, SC_error MANUALMENTE en R (con sumatorias). Compara con aov(). Coincidencia = entendiste. Este ejercicio es EXCELENTE para tus clases — muestra qué hace R por dentro, desmitifica la 'caja negra'. Base: SC_total = sum((y - mean(y))^2).", duration:65, resources:[]},
+      { skill:"teaching", title:"DIDÁCTICA: enseñar ANOVA sin abrumar", task:"El ANOVA abruma por las fórmulas. Estrategia: (1) Primero la INTUICIÓN (varianza entre vs dentro, con gráfico de puntos). (2) Luego UN ejemplo numérico pequeño (3 grupos, 3 datos c/u) a mano. (3) Después R para casos grandes. (4) SIEMPRE interpretar en contexto agropecuario. Nunca empieces por las fórmulas.", duration:55, resources:[]},
     ]},
   { week:6, phase:"Fase 2 · ANOVA fundamentos", title:"Semana 6 — Comparaciones múltiples post-hoc (Folio 13)",
     goals:["El problema de comparaciones múltiples", "LSD, Tukey, Duncan, Dunnett, Scheffé", "Cuál usar cuándo"],
     days:[
-      { skill:"theory", title:"El problema de las comparaciones múltiples", task:"ANOVA dice 'hay diferencias' pero NO cuáles. Comparar todos los pares infla error tipo I (con 5 grupos = 10 comparaciones, α real ~40%). Post-hoc tests CONTROLAN esto. Como profesor: explica POR QUÉ no puedes hacer múltiples t-tests (inflación de α). Concepto clave que justifica todo el tema.", duration:70, resources:[
-        { label:"Multiple comparisons explained", url:"https://www.statisticshowto.com/multiple-testing-problem/" },
+      { skill:"theory", title:"El problema de las comparaciones múltiples", task:"ANOVA dice 'hay diferencias' pero NO cuáles. Comparar todos los pares infla error tipo I (con 5 grupos = 10 comparaciones, α real ~40%). Post-hoc tests CONTROLAN esto. Como profesor: explica POR QUÉ no puedes hacer múltiples t-tests. Concepto clave que justifica todo el tema. Penn State 3.3 lo cubre.", duration:70, resources:[
+        { label:"Penn State STAT 502 — 3.3 (Multiple comparisons)", url:"https://online.stat.psu.edu/stat502/lesson/3/3.3" },
+        { label:"NIST Handbook — Multiple comparisons", url:"https://www.itl.nist.gov/div898/handbook/prc/section4/prc47.htm" },
       ]},
-      { skill:"theory", title:"Las pruebas post-hoc del sílabo: LSD, Duncan, Tukey, Dunnett", task:"LSD (Fisher): menos conservador, más potente, más falsos positivos. TUKEY HSD: controla error familiar, el más usado/recomendado para todos los pares. DUNCAN: intermedio, popular en agronomía LATAM. DUNNETT: comparar tratamientos vs UN CONTROL (no todos los pares). SCHEFFÉ: el más conservador, para contrastes complejos. El profesor anterior usaba LSD/Duncan/Tukey — dominalos.", duration:75, resources:[
-        { label:"agricolae post-hoc (LSD, Duncan, Tukey)", url:"https://cran.r-project.org/web/packages/agricolae/agricolae.pdf" },
+      { skill:"theory", title:"Las pruebas post-hoc: LSD, Duncan, Tukey, Dunnett", task:"LSD (Fisher): menos conservador, más potente, más falsos positivos. TUKEY HSD: controla error familiar, el más recomendado para todos los pares. DUNCAN: intermedio, popular en agronomía LATAM. DUNNETT: comparar tratamientos vs UN CONTROL. SCHEFFÉ: el más conservador. El profesor anterior usaba LSD/Duncan/Tukey — dominalos con agricolae.", duration:75, resources:[
+        { label:"agricolae tutorial — LSD, Duncan, Tukey, Dunnett (PDF)", url:"https://cran.r-project.org/web/packages/agricolae/vignettes/tutorial.pdf" },
+        { label:"Penn State STAT 502 — 3.3 (Tukey, Dunnett, etc.)", url:"https://online.stat.psu.edu/stat502/lesson/3/3.3" },
       ]},
-      { skill:"code", title:"Post-hoc en R con agricolae", task:"`library(agricolae)`. `LSD.test(modelo, 'tratamiento')`. `duncan.test(modelo, 'tratamiento')`. `HSD.test(modelo, 'tratamiento')` (Tukey). `emmeans` + `contrast` para Dunnett. Cada uno genera GRUPOS (letras a, b, c). Practica interpretación: tratamientos con misma letra NO difieren significativamente.", duration:80, resources:[]},
-      { skill:"theory", title:"Cómo elegir la prueba post-hoc correcta", task:"Árbol de decisión: ¿comparas contra un control? → DUNNETT. ¿Todos los pares, quieres control estricto? → TUKEY. ¿Agronomía tradicional, balance potencia/control? → DUNCAN. ¿Máxima potencia, aceptas más riesgo? → LSD. ¿Contrastes complejos? → SCHEFFÉ. Como profesor: da criterios CLAROS, no 'depende'.", duration:55, resources:[]},
-      { skill:"teaching", title:"DIDÁCTICA: la tabla de letras (visualización clave)", task:"Los estudiantes se confunden con la 'tabla de letras' (grupos homogéneos). Prepara explicación visual: gráfico de barras con letras encima. Misma letra = estadísticamente iguales. Distinta letra = difieren. Es la forma ESTÁNDAR de reportar en papers agropecuarios — tus estudiantes DEBEN dominarla. Practica generando estos gráficos en R (ggplot2).", duration:55, resources:[]},
+      { skill:"code", title:"Post-hoc en R con agricolae", task:"`library(agricolae)`. `LSD.test(modelo, 'tratamiento')`. `duncan.test(modelo, 'tratamiento')`. `HSD.test(modelo, 'tratamiento')` (Tukey). Para Dunnett: `emmeans` + `contrast(..., method='dunnett')`. Cada uno genera GRUPOS (letras a, b, c). Tratamientos con misma letra NO difieren.", duration:80, resources:[
+        { label:"rcompanion — Post-hoc / mean separation", url:"https://rcompanion.org/handbook/G_06.html" },
+        { label:"emmeans vignette (comparaciones)", url:"https://cran.r-project.org/web/packages/emmeans/vignettes/comparisons.html" },
+      ]},
+      { skill:"theory", title:"Cómo elegir la prueba post-hoc correcta", task:"Árbol de decisión: ¿comparas contra un control? → DUNNETT. ¿Todos los pares, control estricto? → TUKEY. ¿Agronomía tradicional, balance? → DUNCAN. ¿Máxima potencia, aceptas más riesgo? → LSD. ¿Contrastes complejos? → SCHEFFÉ. Como profesor: da criterios CLAROS, no 'depende'.", duration:55, resources:[]},
+      { skill:"teaching", title:"DIDÁCTICA: la tabla de letras (visualización clave)", task:"Los estudiantes se confunden con la 'tabla de letras' (grupos homogéneos). Prepara explicación visual: gráfico de barras con letras encima. Misma letra = estadísticamente iguales. Es la forma ESTÁNDAR de reportar en papers agropecuarios. Practica generando estos gráficos en R (agricolae::bar.group o ggplot2).", duration:55, resources:[
+        { label:"agricolae tutorial — gráficos con letras (PDF)", url:"https://cran.r-project.org/web/packages/agricolae/vignettes/tutorial.pdf" },
+      ]},
     ]},
   { week:7, phase:"Fase 2 · ANOVA fundamentos", title:"Semana 7 — Modelo lineal, efectos, contrastes",
     goals:["Modelo lineal del ANOVA", "Efectos fijos vs aleatorios", "Contrastes ortogonales"],
     days:[
-      { skill:"theory", title:"El modelo lineal detrás del ANOVA", task:"Yij = μ + τi + εij (observación = media general + efecto tratamiento + error). Es la base de TODO diseño. Entender el modelo permite generalizarlo (bloques, factoriales). Como profesor: escribir el modelo para cada diseño es lo que da COHERENCIA al curso completo.", duration:70, resources:[]},
-      { skill:"theory", title:"Efectos fijos vs aleatorios (modelo I, II, III)", task:"EFECTOS FIJOS: niveles elegidos específicamente (4 fertilizantes de interés). EFECTOS ALEATORIOS: niveles son muestra de población (5 fincas al azar). MIXTO: ambos. Cambia la interpretación y la prueba F. Concepto sutil que muchos profesores omiten — dominarlo te distingue.", duration:65, resources:[]},
-      { skill:"theory", title:"Contrastes ortogonales — comparaciones planificadas", task:"En vez de comparar todo con todo (post-hoc), a veces tienes hipótesis ESPECÍFICAS a priori (control vs resto, dosis baja vs alta). Contrastes ortogonales las prueban con más potencia. Suma de coeficientes = 0, productos cruzados = 0. Elegante y potente.", duration:60, resources:[]},
-      { skill:"code", title:"Contrastes en R", task:"`contrasts()`, `emmeans` con `contrast()`. Define contrastes personalizados (ej: control vs promedio de tratamientos). Interpreta. Es técnica avanzada que enriquece tu enseñanza — muestra que hay más que post-hoc genéricos.", duration:70, resources:[]},
-      { skill:"teaching", title:"DIDÁCTICA: conectar el modelo con cada diseño", task:"Prepara un 'hilo conductor': el modelo lineal Yij = μ + τi + εij crece en cada diseño (agrega βj para bloques, γk para cuadrado latino, (τβ)ij para interacción factorial). Si tus estudiantes ven esta PROGRESIÓN, entienden que los diseños NO son temas sueltos sino EXTENSIONES del mismo modelo. Es la clave pedagógica del curso.", duration:55, resources:[]},
+      { skill:"theory", title:"El modelo lineal detrás del ANOVA", task:"Yij = μ + τi + εij (observación = media general + efecto tratamiento + error). Es la base de TODO diseño. Entender el modelo permite generalizarlo (bloques, factoriales). Como profesor: escribir el modelo para cada diseño es lo que da COHERENCIA al curso. Penn State 2.1 lo introduce.", duration:70, resources:[
+        { label:"Penn State STAT 502 — 2.1 (The ANOVA model)", url:"https://online.stat.psu.edu/stat502/lesson/2/2.1" },
+      ]},
+      { skill:"theory", title:"Efectos fijos vs aleatorios (modelo I, II, III)", task:"EFECTOS FIJOS: niveles elegidos específicamente (4 fertilizantes de interés). EFECTOS ALEATORIOS: niveles son muestra de población (5 fincas al azar). MIXTO: ambos. Cambia la interpretación y la prueba F. Concepto sutil que muchos profesores omiten — dominarlo te distingue. Penn State Lesson 4 lo trata.", duration:65, resources:[
+        { label:"Penn State STAT 502 — Lesson 4 (Random effects)", url:"https://online.stat.psu.edu/stat502/lesson/4" },
+      ]},
+      { skill:"theory", title:"Contrastes ortogonales — comparaciones planificadas", task:"En vez de comparar todo con todo (post-hoc), a veces tienes hipótesis ESPECÍFICAS a priori (control vs resto, dosis baja vs alta). Contrastes ortogonales las prueban con más potencia. Suma de coeficientes = 0, productos cruzados = 0. Elegante y potente. Penn State 3.4 los cubre.", duration:60, resources:[
+        { label:"Penn State STAT 502 — 3.4 (Contrasts)", url:"https://online.stat.psu.edu/stat502/lesson/3/3.4" },
+      ]},
+      { skill:"code", title:"Contrastes en R", task:"`emmeans` con `contrast()`. Define contrastes personalizados (ej: control vs promedio de tratamientos). Interpreta. Es técnica avanzada que enriquece tu enseñanza. La vignette de emmeans tiene ejemplos completos.", duration:70, resources:[
+        { label:"emmeans — contrastes personalizados (vignette)", url:"https://cran.r-project.org/web/packages/emmeans/vignettes/comparisons.html" },
+      ]},
+      { skill:"teaching", title:"DIDÁCTICA: conectar el modelo con cada diseño", task:"Prepara un 'hilo conductor': el modelo Yij = μ + τi + εij crece en cada diseño (agrega βj para bloques, γk para cuadrado latino, (τβ)ij para interacción). Si tus estudiantes ven esta PROGRESIÓN, entienden que los diseños NO son temas sueltos sino EXTENSIONES del mismo modelo. Es la clave pedagógica del curso.", duration:55, resources:[]},
     ]},
 
   // ==== FASE 3 · SEMANAS 8-12: Diseños experimentales clásicos ====
-  { week:8, phase:"Fase 3 · Diseños clásicos", title:"Semana 8 — Diseño Completamente al Azar (DCA/DCA, Folio 6)",
+  { week:8, phase:"Fase 3 · Diseños clásicos", title:"Semana 8 — Diseño Completamente al Azar (DCA, Folio 6)",
     goals:["DCA — el diseño más simple", "Cuándo usarlo", "Análisis completo en R"],
     days:[
-      { skill:"theory", title:"DCA — Diseño Completamente al Azar", task:"El más simple: unidades experimentales homogéneas, tratamientos asignados 100% al azar. Modelo: Yij = μ + τi + εij. Requisito: homogeneidad de unidades (ej: mismo suelo, misma edad de animales). Ventaja: simple, máximos gl para error. Desventaja: no controla variabilidad externa. Base de todos los demás.", duration:70, resources:[
-        { label:"Montgomery cap 3", url:"https://www.academia.edu/40573222/Dise%C3%B1o_y_an%C3%A1lisis_de_experimentos_Douglas_Montgomery" },
-        { label:"Condo & Pazmiño ESPOCH 2015 (bibliografía sílabo)", url:"http://cip.espoch.edu.ec/" },
+      { skill:"theory", title:"DCA — Diseño Completamente al Azar", task:"El más simple: unidades experimentales homogéneas, tratamientos asignados 100% al azar. Modelo: Yij = μ + τi + εij. Requisito: homogeneidad de unidades (mismo suelo, misma edad de animales). Ventaja: simple, máximos gl para error. Desventaja: no controla variabilidad externa. Base de todos los demás. Penn State Lesson 2 + agricolae.", duration:70, resources:[
+        { label:"Penn State STAT 502 — Lesson 2 (CRD / DCA)", url:"https://online.stat.psu.edu/stat502/lesson/2" },
+        { label:"NIST Handbook — Completely randomized designs", url:"https://www.itl.nist.gov/div898/handbook/pri/section3/pri331.htm" },
       ]},
-      { skill:"code", title:"DCA completo en R — de datos a conclusiones", task:"Dataset: 4 tratamientos, 5 repeticiones. Flujo COMPLETO: (1) Explorar datos (boxplot). (2) Ajustar `aov()`. (3) Validar supuestos. (4) Interpretar ANOVA. (5) Post-hoc si significativo. (6) Gráfico con letras. (7) Conclusión agronómica. Este es el TEMPLATE que enseñarás — domínalo perfecto.", duration:85, resources:[]},
-      { skill:"code", title:"DCA con el paquete ExpDes (diseñado para esto)", task:"`library(ExpDes)`. `dca(tratamiento, respuesta, quali=TRUE, mcomp='tukey')` hace TODO en un comando: ANOVA + supuestos + post-hoc. Muy usado en LATAM agronómico. Compara con el flujo manual. Buena herramienta para enseñar (rápida) pero enseña primero el flujo manual (comprensión).", duration:70, resources:[
-        { label:"ExpDes package", url:"https://cran.r-project.org/web/packages/ExpDes/ExpDes.pdf" },
+      { skill:"code", title:"DCA completo en R — de datos a conclusiones", task:"Dataset: 4 tratamientos, 5 repeticiones. Flujo COMPLETO: (1) Explorar (boxplot). (2) Ajustar aov(). (3) Validar supuestos. (4) Interpretar ANOVA. (5) Post-hoc si significativo. (6) Gráfico con letras. (7) Conclusión agronómica. Este es el TEMPLATE que enseñarás — domínalo perfecto. agricolae::design.crd para generar el diseño.", duration:85, resources:[
+        { label:"agricolae tutorial — DCA completo (PDF)", url:"https://cran.r-project.org/web/packages/agricolae/vignettes/tutorial.pdf" },
       ]},
-      { skill:"theory", title:"Balanceado vs desbalanceado", task:"DCA balanceado: mismo n por tratamiento (ideal). Desbalanceado: distintos n (por pérdida de unidades). Implicaciones: SC tipo I vs III, potencia reducida, análisis más complejo. Como profesor: explica cómo manejar datos desbalanceados (comunes en experimentos reales con mortalidad).", duration:55, resources:[]},
-      { skill:"teaching", title:"DIDÁCTICA: primer diseño = plantilla mental", task:"El DCA es el PRIMER diseño que enseñas — sienta el patrón para todos. Asegúrate que tus estudiantes internalicen el FLUJO (explorar→modelar→validar→interpretar→comparar→concluir). Todos los diseños siguientes siguen este flujo. Prepara una práctica de laboratorio guiada paso a paso con datos reales agropecuarios.", duration:55, resources:[]},
+      { skill:"code", title:"DCA con ExpDes (diseñado para agronomía)", task:"`library(ExpDes)`. `crd(tratamiento, respuesta, quali=TRUE, mcomp='tukey')` hace TODO en un comando: ANOVA + supuestos + post-hoc. Muy usado en LATAM. Compara con el flujo manual. Buena herramienta para enseñar (rápida) pero enseña primero el flujo manual (comprensión).", duration:70, resources:[
+        { label:"ExpDes package (manual PDF)", url:"https://cran.r-project.org/web/packages/ExpDes/ExpDes.pdf" },
+      ]},
+      { skill:"theory", title:"Balanceado vs desbalanceado", task:"DCA balanceado: mismo n por tratamiento (ideal). Desbalanceado: distintos n (por pérdida de unidades). Implicaciones: SC tipo I vs III, potencia reducida. Como profesor: explica cómo manejar datos desbalanceados (comunes en experimentos reales con mortalidad). Penn State Lesson 10 (unbalanced) lo trata.", duration:55, resources:[
+        { label:"Penn State STAT 502 — Lesson 10 (Unbalanced designs)", url:"https://online.stat.psu.edu/stat502/lesson/10" },
+      ]},
+      { skill:"teaching", title:"DIDÁCTICA: primer diseño = plantilla mental", task:"El DCA es el PRIMER diseño que enseñas — sienta el patrón para todos. Asegúrate que tus estudiantes internalicen el FLUJO (explorar→modelar→validar→interpretar→comparar→concluir). Todos los diseños siguientes lo siguen. Prepara una práctica de laboratorio guiada paso a paso con datos reales agropecuarios.", duration:55, resources:[]},
     ]},
   { week:9, phase:"Fase 3 · Diseños clásicos", title:"Semana 9 — Diseño en Bloques Completos al Azar (DBCA, Folio 7)",
     goals:["Bloqueo — controlar variabilidad", "DBCA modelo y análisis", "Eficiencia relativa"],
     days:[
-      { skill:"theory", title:"El principio del bloqueo — Fisher", task:"Cuando las unidades NO son homogéneas (gradiente de fertilidad, tamaño de animales), agrupamos en BLOQUES homogéneos internamente. 'Block what you can, randomize what you cannot' (Box). Controla variabilidad conocida → reduce error → más potencia. Modelo: Yij = μ + τi + βj + εij (agrega efecto bloque βj).", duration:75, resources:[
-        { label:"Montgomery cap 4 — bloques", url:"https://www.academia.edu/40573222/Dise%C3%B1o_y_an%C3%A1lisis_de_experimentos_Douglas_Montgomery" },
+      { skill:"theory", title:"El principio del bloqueo — Fisher", task:"Cuando las unidades NO son homogéneas (gradiente de fertilidad, tamaño de animales), agrupamos en BLOQUES homogéneos internamente. 'Block what you can, randomize what you cannot' (Box). Controla variabilidad conocida → reduce error → más potencia. Modelo: Yij = μ + τi + βj + εij. Penn State Lesson 5 es la referencia.", duration:75, resources:[
+        { label:"Penn State STAT 502 — Lesson 5 (Blocking / RCBD)", url:"https://online.stat.psu.edu/stat502/lesson/5" },
+        { label:"NIST Handbook — Randomized block designs", url:"https://www.itl.nist.gov/div898/handbook/pri/section3/pri332.htm" },
       ]},
-      { skill:"theory", title:"Cuándo bloquear y cómo formar bloques", task:"Bloquear por: gradiente de suelo, edad/peso inicial de animales, día de medición, operador. REGLA: bloquea fuentes de variación NO de interés. Bloques perpendiculares al gradiente. Como profesor: ejemplos agropecuarios concretos (pendiente del terreno, camadas de animales) hacen tangible el concepto.", duration:60, resources:[]},
-      { skill:"code", title:"DBCA en R", task:"`aov(respuesta ~ tratamiento + bloque, data=d)`. El bloque entra como factor. ANOVA ahora tiene fila de Bloques. Interpretar: ¿el bloqueo fue efectivo? (CM_bloque alto vs error). `ExpDes::rbd()` para flujo completo. Practica con datos reales.", duration:75, resources:[]},
-      { skill:"theory", title:"Eficiencia relativa del bloqueo", task:"¿Valió la pena bloquear? Eficiencia relativa (ER) compara error del DBCA vs DCA hipotético. ER>1 = el bloqueo ayudó. Si ER≈1, bloqueaste innecesariamente (perdiste gl sin ganar precisión). Como profesor: enseña a EVALUAR si el diseño fue apropiado post-hoc.", duration:60, resources:[]},
-      { skill:"teaching", title:"DIDÁCTICA: la analogía del bloqueo", task:"Analogía potente para bloques: 'comparar corredores'. Si comparas velocistas de distintas edades, agrupas por categoría de edad (bloque) para comparar justamente. Sin bloquear, la edad confunde el resultado. Diseña TU analogía agropecuaria (ej: comparar dietas en animales de distinto peso inicial → bloquear por peso).", duration:50, resources:[]},
+      { skill:"theory", title:"Cuándo bloquear y cómo formar bloques", task:"Bloquear por: gradiente de suelo, edad/peso inicial de animales, día de medición, operador. REGLA: bloquea fuentes de variación NO de interés. Bloques perpendiculares al gradiente. Como profesor: ejemplos agropecuarios concretos (pendiente del terreno, camadas) hacen tangible el concepto.", duration:60, resources:[
+        { label:"Penn State STAT 502 — 5.1 (Blocking rationale)", url:"https://online.stat.psu.edu/stat502/lesson/5/5.1" },
+      ]},
+      { skill:"code", title:"DBCA en R", task:"`aov(respuesta ~ tratamiento + bloque, data=d)`. El bloque entra como factor. ANOVA ahora tiene fila de Bloques. Interpretar: ¿el bloqueo fue efectivo? (CM_bloque alto vs error). `ExpDes::rbd()` para flujo completo. agricolae::design.rcbd para generar. Practica con datos reales.", duration:75, resources:[
+        { label:"agricolae tutorial — DBCA / RCBD (PDF)", url:"https://cran.r-project.org/web/packages/agricolae/vignettes/tutorial.pdf" },
+      ]},
+      { skill:"theory", title:"Eficiencia relativa del bloqueo", task:"¿Valió la pena bloquear? Eficiencia relativa (ER) compara error del DBCA vs DCA hipotético. ER>1 = el bloqueo ayudó. Si ER≈1, bloqueaste innecesariamente (perdiste gl sin ganar precisión). Como profesor: enseña a EVALUAR si el diseño fue apropiado post-hoc. Penn State 5.3 lo explica.", duration:60, resources:[
+        { label:"Penn State STAT 502 — 5.3 (Relative efficiency)", url:"https://online.stat.psu.edu/stat502/lesson/5/5.3" },
+      ]},
+      { skill:"teaching", title:"DIDÁCTICA: la analogía del bloqueo", task:"Analogía potente: 'comparar corredores'. Si comparas velocistas de distintas edades, agrupas por categoría (bloque) para comparar justamente. Sin bloquear, la edad confunde. Diseña TU analogía agropecuaria (ej: comparar dietas en animales de distinto peso inicial → bloquear por peso).", duration:50, resources:[]},
     ]},
   { week:10, phase:"Fase 3 · Diseños clásicos", title:"Semana 10 — Diseño en Cuadrado Latino (DCL, Folio 8)",
     goals:["Doble bloqueo — filas y columnas", "DCL modelo y restricciones", "Análisis e interpretación"],
     days:[
-      { skill:"theory", title:"Cuadrado Latino — controlar DOS fuentes de variación", task:"Cuando hay DOS gradientes perpendiculares (ej: fertilidad norte-sur Y humedad este-oeste), el DCL bloquea en FILAS y COLUMNAS simultáneamente. Cada tratamiento aparece UNA vez por fila y UNA por columna. Modelo: Yijk = μ + τi + βj + γk + εijk. Requisito: #tratamientos = #filas = #columnas (cuadrado).", duration:75, resources:[
-        { label:"Montgomery cap 4 — cuadrado latino", url:"https://www.academia.edu/40573222/Dise%C3%B1o_y_an%C3%A1lisis_de_experimentos_Douglas_Montgomery" },
+      { skill:"theory", title:"Cuadrado Latino — controlar DOS fuentes de variación", task:"Cuando hay DOS gradientes perpendiculares (fertilidad norte-sur Y humedad este-oeste), el DCL bloquea en FILAS y COLUMNAS. Cada tratamiento aparece UNA vez por fila y UNA por columna. Modelo: Yijk = μ + τi + βj + γk + εijk. Requisito: #tratamientos = #filas = #columnas. Penn State 6.1 + NIST.", duration:75, resources:[
+        { label:"Penn State STAT 502 — Lesson 6 (Latin squares)", url:"https://online.stat.psu.edu/stat502/lesson/6" },
+        { label:"NIST Handbook — Latin square designs", url:"https://www.itl.nist.gov/div898/handbook/pri/section3/pri3334.htm" },
       ]},
-      { skill:"theory", title:"Construcción del cuadrado latino", task:"Cuadrado latino estándar: primera fila y columna en orden. Aleatorización: permutar filas, columnas, asignación de tratamientos a letras. Para t=4: 4x4. Limitación: t debe ser moderado (3-8 típico; muy grande = poco práctico). Como profesor: mostrar la CONSTRUCCIÓN paso a paso.", duration:60, resources:[]},
-      { skill:"code", title:"DCL en R", task:"`aov(respuesta ~ tratamiento + fila + columna, data=d)`. `agricolae::design.lsd()` para GENERAR el diseño. `ExpDes::latsd()` para análisis. Interpretar: ¿ambos bloqueos ayudaron? Practica con ejemplo agropecuario (ensayo de variedades con gradientes de suelo cruzados).", duration:75, resources:[]},
-      { skill:"theory", title:"Ventajas, limitaciones y gl del error", task:"VENTAJA: controla 2 fuentes con pocas unidades (t² parcelas). LIMITACIÓN: t=t=t obligatorio, gl del error se reducen (para t=3, solo 2 gl error — muy pocos). Asume NO interacción entre filas/columnas/tratamientos. Como profesor: sé honesto sobre cuándo NO usar DCL (t muy pequeño = error gl insuficiente).", duration:55, resources:[]},
-      { skill:"teaching", title:"DIDÁCTICA: visualizar el cuadrado", task:"El DCL es MUY visual. Prepara una cuadrícula coloreada (cada tratamiento un color, una vez por fila/columna). Los estudiantes VEN el balance. Ejemplo físico: parcelas en campo con gradientes. La visualización hace que 'clic' inmediato. Diseña esta ayuda visual.", duration:50, resources:[]},
+      { skill:"theory", title:"Construcción del cuadrado latino", task:"Cuadrado latino estándar: primera fila y columna en orden. Aleatorización: permutar filas, columnas, asignación de tratamientos a letras. Para t=4: 4x4. Limitación: t moderado (3-8 típico). Como profesor: mostrar la CONSTRUCCIÓN paso a paso.", duration:60, resources:[]},
+      { skill:"code", title:"DCL en R", task:"`aov(respuesta ~ tratamiento + fila + columna, data=d)`. `agricolae::design.lsd()` para GENERAR el diseño. `ExpDes::latsd()` para análisis. Interpretar: ¿ambos bloqueos ayudaron? Practica con ejemplo agropecuario (ensayo de variedades con gradientes cruzados).", duration:75, resources:[
+        { label:"agricolae tutorial — Latin square (PDF)", url:"https://cran.r-project.org/web/packages/agricolae/vignettes/tutorial.pdf" },
+      ]},
+      { skill:"theory", title:"Ventajas, limitaciones y gl del error", task:"VENTAJA: controla 2 fuentes con pocas unidades (t² parcelas). LIMITACIÓN: t=t=t obligatorio, gl del error se reducen (para t=3, solo 2 gl error — muy pocos). Asume NO interacción entre filas/columnas/tratamientos. Como profesor: sé honesto sobre cuándo NO usar DCL (t muy pequeño).", duration:55, resources:[]},
+      { skill:"teaching", title:"DIDÁCTICA: visualizar el cuadrado", task:"El DCL es MUY visual. Prepara una cuadrícula coloreada (cada tratamiento un color, una vez por fila/columna). Los estudiantes VEN el balance. Ejemplo físico: parcelas en campo con gradientes. La visualización hace 'clic' inmediato.", duration:50, resources:[]},
     ]},
   { week:11, phase:"Fase 3 · Diseños clásicos", title:"Semana 11 — Parcelas Divididas (Split-Plot, Folio 9)",
     goals:["Cuando un factor es difícil de aleatorizar", "Dos niveles de error", "Análisis correcto"],
     days:[
-      { skill:"theory", title:"Parcelas Divididas — el diseño de dos errores", task:"Cuando un factor requiere parcelas GRANDES (riego, labranza) y otro puede ir en parcelas PEQUEÑAS (variedad). Parcela grande = factor principal. Subparcela = factor secundario. CLAVE: DOS errores (error a para parcela grande, error b para subparcela). Es el diseño MÁS mal analizado — muchos usan error único (INCORRECTO).", duration:80, resources:[
-        { label:"Montgomery cap 14 — split-plot", url:"https://www.academia.edu/40573222/Dise%C3%B1o_y_an%C3%A1lisis_de_experimentos_Douglas_Montgomery" },
+      { skill:"theory", title:"Parcelas Divididas — el diseño de dos errores", task:"Cuando un factor requiere parcelas GRANDES (riego, labranza) y otro va en parcelas PEQUEÑAS (variedad). Parcela grande = factor principal. Subparcela = factor secundario. CLAVE: DOS errores (error a para parcela grande, error b para subparcela). Es el diseño MÁS mal analizado. Penn State Lesson 8 es EXCELENTE aquí.", duration:80, resources:[
+        { label:"Penn State STAT 502 — Lesson 8 (Split-plot designs)", url:"https://online.stat.psu.edu/stat502/lesson/8" },
+        { label:"NIST Handbook — Split-plot designs", url:"https://www.itl.nist.gov/div898/handbook/pri/section3/pri3311.htm" },
       ]},
-      { skill:"theory", title:"Por qué dos errores — la sutileza clave", task:"El factor de parcela grande se prueba con error a (menos gl, menos preciso). El factor de subparcela y la interacción con error b (más gl, más preciso). Confundirlos da conclusiones ERRÓNEAS. Como profesor: este es el punto donde te distingues — enseñarlo BIEN es raro. Muchos profesores lo enseñan mal.", duration:70, resources:[]},
-      { skill:"code", title:"Parcelas divididas en R — el modelo correcto", task:"`aov(respuesta ~ principal*secundario + Error(bloque/principal), data=d)`. El término Error() especifica la estructura anidada. `ExpDes::split2.rbd()`. VERIFICAR que usa los errores correctos. Practica e interpreta las DOS tablas de error.", duration:85, resources:[]},
+      { skill:"theory", title:"Por qué dos errores — la sutileza clave", task:"El factor de parcela grande se prueba con error a (menos gl, menos preciso). El factor de subparcela y la interacción con error b (más gl, más preciso). Confundirlos da conclusiones ERRÓNEAS. Como profesor: este es el punto donde te distingues — enseñarlo BIEN es raro. Penn State 8.1-8.2 lo detalla.", duration:70, resources:[
+        { label:"Penn State STAT 502 — 8.1 (Split-plot rationale)", url:"https://online.stat.psu.edu/stat502/lesson/8/8.1" },
+      ]},
+      { skill:"code", title:"Parcelas divididas en R — el modelo correcto", task:"`aov(respuesta ~ principal*secundario + Error(bloque/principal), data=d)`. El término Error() especifica la estructura anidada. `ExpDes::split2.rbd()`. VERIFICAR que usa los errores correctos. Practica e interpreta las DOS tablas de error. agricolae también tiene sp.plot.", duration:85, resources:[
+        { label:"agricolae tutorial — split-plot (PDF)", url:"https://cran.r-project.org/web/packages/agricolae/vignettes/tutorial.pdf" },
+      ]},
       { skill:"theory", title:"Franjas divididas (strip-plot) — variante", task:"Split-block o strip-plot: ambos factores en franjas perpendiculares. TRES errores. Aún más complejo. Mencionar como extensión. El sílabo se enfoca en split-plot básico pero saber que existe strip-plot enriquece.", duration:55, resources:[]},
       { skill:"teaching", title:"DIDÁCTICA: el error más común a prevenir", task:"Anticipa el ERROR de tus estudiantes: analizar split-plot como factorial simple (un solo error). Prepara un ejemplo donde ambos análisis dan conclusiones DISTINTAS — muestra el impacto de hacerlo mal. Enseñar desde el error común es pedagogía poderosa. Tus estudiantes recordarán no cometerlo.", duration:55, resources:[]},
     ]},
   { week:12, phase:"Fase 3 · Diseños clásicos", title:"Semana 12 — Diseño Cross-Over (Folio 10)",
     goals:["Diseños de sobrecruzamiento", "Efecto residual (carryover)", "Aplicación en nutrición animal"],
     days:[
-      { skill:"theory", title:"Cross-Over — cada sujeto es su propio control", task:"Diseño donde cada unidad (animal) recibe TODOS los tratamientos en SECUENCIA (períodos). Cada sujeto es su propio control → controla variabilidad entre individuos. MUY usado en nutrición animal (dietas), farmacología. Modelo incluye: tratamiento + período + secuencia + sujeto.", duration:75, resources:[
-        { label:"Cross-over designs", url:"https://online.stat.psu.edu/stat509/lesson/9" },
+      { skill:"theory", title:"Cross-Over — cada sujeto es su propio control", task:"Diseño donde cada unidad (animal) recibe TODOS los tratamientos en SECUENCIA (períodos). Cada sujeto es su propio control → controla variabilidad entre individuos. MUY usado en nutrición animal (dietas), farmacología. Modelo: tratamiento + período + secuencia + sujeto. Penn State STAT 509 Lesson 9 lo cubre bien.", duration:75, resources:[
+        { label:"Penn State STAT 509 — Lesson 9 (Crossover designs)", url:"https://online.stat.psu.edu/stat509/lesson/9" },
+        { label:"Penn State STAT 503 — Crossover context", url:"https://online.stat.psu.edu/stat503/" },
       ]},
-      { skill:"theory", title:"Efecto residual (carryover) — el problema central", task:"CARRYOVER: el efecto de un tratamiento persiste al siguiente período (ej: una dieta afecta el metabolismo en el período siguiente). Contamina resultados. Solución: períodos de LAVADO (washout) entre tratamientos. Como profesor: explica por qué el washout es crítico en cross-over.", duration:65, resources:[]},
-      { skill:"code", title:"Cross-Over en R", task:"Modelo con período + secuencia + sujeto(secuencia) + tratamiento. `library(Crossover)` o modelado manual con `lme4` (efectos mixtos). Practica con datos de nutrición animal (ej: 3 dietas en 3 períodos). Interpreta considerando carryover.", duration:80, resources:[]},
-      { skill:"theory", title:"Cuándo usar cross-over (ventajas/limitaciones)", task:"VENTAJA: muy eficiente (menos animales, cada uno es su control), potente. LIMITACIÓN: carryover, no sirve para tratamientos con efectos permanentes (no puedes 'des-tratar'), períodos largos. Ideal para: dietas reversibles, suplementos. Como profesor: da criterios claros de aplicabilidad.", duration:55, resources:[]},
+      { skill:"theory", title:"Efecto residual (carryover) — el problema central", task:"CARRYOVER: el efecto de un tratamiento persiste al siguiente período (una dieta afecta el metabolismo en el período siguiente). Contamina resultados. Solución: períodos de LAVADO (washout) entre tratamientos. Como profesor: explica por qué el washout es crítico en cross-over.", duration:65, resources:[
+        { label:"Penn State STAT 509 — 9.2 (Carryover effects)", url:"https://online.stat.psu.edu/stat509/lesson/9/9.2" },
+      ]},
+      { skill:"code", title:"Cross-Over en R", task:"Modelo con período + secuencia + sujeto(secuencia) + tratamiento. Modelado con `lme4` (efectos mixtos) o aov con Error(). Practica con datos de nutrición animal (ej: 3 dietas en 3 períodos). Interpreta considerando carryover.", duration:80, resources:[
+        { label:"rcompanion — repeated measures / mixed models", url:"https://rcompanion.org/handbook/I_09.html" },
+      ]},
+      { skill:"theory", title:"Cuándo usar cross-over (ventajas/limitaciones)", task:"VENTAJA: muy eficiente (menos animales, cada uno es su control), potente. LIMITACIÓN: carryover, no sirve para tratamientos con efectos permanentes, períodos largos. Ideal para: dietas reversibles, suplementos. Como profesor: da criterios claros de aplicabilidad.", duration:55, resources:[]},
       { skill:"teaching", title:"DIDÁCTICA: conexión con la realidad pecuaria", task:"Cross-over es muy relevante en producción de rumiantes (el docente titular es MSc en sistemas de producción de rumiantes). Prepara ejemplos de ensayos de alimentación en vacas/ovejas donde cross-over es el diseño natural. Conectar con la especialidad de la carrera hace el aprendizaje relevante.", duration:50, resources:[]},
     ]},
 
@@ -6332,115 +6427,169 @@ const DEX = [
   { week:13, phase:"Fase 4 · Diseños factoriales", title:"Semana 13 — Factoriales: concepto e interacción",
     goals:["Por qué factoriales", "El concepto de interacción", "Efectos principales vs interacción"],
     days:[
-      { skill:"theory", title:"Diseños factoriales — estudiar varios factores a la vez", task:"En vez de un factor, estudias 2+ SIMULTÁNEAMENTE (ej: fertilizante × variedad). Ventaja: eficiencia (mismos datos, más información) + detecta INTERACCIONES. Notación: 2×3 = 2 niveles factor A × 3 niveles factor B = 6 combinaciones. Fundamental en investigación agropecuaria moderna.", duration:75, resources:[
-        { label:"Montgomery cap 5 — factoriales", url:"https://www.academia.edu/40573222/Dise%C3%B1o_y_an%C3%A1lisis_de_experimentos_Douglas_Montgomery" },
+      { skill:"theory", title:"Diseños factoriales — estudiar varios factores a la vez", task:"En vez de un factor, estudias 2+ SIMULTÁNEAMENTE (fertilizante × variedad). Ventaja: eficiencia (mismos datos, más información) + detecta INTERACCIONES. Notación: 2×3 = 2 niveles factor A × 3 niveles factor B = 6 combinaciones. Fundamental en investigación agropecuaria. Penn State Lesson 7 es la referencia.", duration:75, resources:[
+        { label:"Penn State STAT 502 — Lesson 7 (Factorial designs)", url:"https://online.stat.psu.edu/stat502/lesson/7" },
+        { label:"NIST Handbook — Full factorial designs", url:"https://www.itl.nist.gov/div898/handbook/pri/section3/pri333.htm" },
       ]},
-      { skill:"theory", title:"INTERACCIÓN — el concepto más importante", task:"Interacción: el efecto de un factor DEPENDE del nivel del otro. Ej: fertilizante N mejora rendimiento SOLO en variedad X, no en Y. Sin factoriales NO puedes detectarla. Gráfico de interacción: líneas paralelas = sin interacción, líneas que se cruzan = interacción fuerte. Como profesor: la interacción es lo que hace valiosos los factoriales. Domina su explicación visual.", duration:75, resources:[]},
-      { skill:"theory", title:"Efectos principales vs interacción — jerarquía", task:"REGLA CRÍTICA: si hay interacción significativa, los efectos principales NO se interpretan aisladamente (son engañosos). Primero mira interacción; si significativa → analiza efectos simples (efecto de A en cada nivel de B). Si NO hay interacción → interpreta efectos principales. Como profesor: este orden es OBLIGATORIO enseñarlo.", duration:65, resources:[]},
-      { skill:"code", title:"Gráficos de interacción en R", task:"`interaction.plot(factorA, factorB, respuesta)`. `ggplot2` con líneas por grupo. Practica: genera gráficos con y sin interacción. APRENDE a leerlos instantáneamente. Es la herramienta visual #1 para factoriales — tus estudiantes deben dominarla.", duration:70, resources:[]},
+      { skill:"theory", title:"INTERACCIÓN — el concepto más importante", task:"Interacción: el efecto de un factor DEPENDE del nivel del otro. Ej: fertilizante N mejora rendimiento SOLO en variedad X, no en Y. Sin factoriales NO puedes detectarla. Gráfico de interacción: líneas paralelas = sin interacción, líneas que se cruzan = interacción. Domina su explicación visual. Penn State 7.2.", duration:75, resources:[
+        { label:"Penn State STAT 502 — 7.2 (Interaction)", url:"https://online.stat.psu.edu/stat502/lesson/7/7.2" },
+        { label:"StatQuest — Interaction / two-way ANOVA (video)", url:"https://www.youtube.com/watch?v=uSHUcm5c0Kk" },
+      ]},
+      { skill:"theory", title:"Efectos principales vs interacción — jerarquía", task:"REGLA CRÍTICA: si hay interacción significativa, los efectos principales NO se interpretan aisladamente (son engañosos). Primero mira interacción; si significativa → analiza efectos simples (efecto de A en cada nivel de B). Si NO hay interacción → interpreta efectos principales. Este orden es OBLIGATORIO enseñarlo.", duration:65, resources:[]},
+      { skill:"code", title:"Gráficos de interacción en R", task:"`interaction.plot(factorA, factorB, respuesta)`. `ggplot2` con líneas por grupo. Practica: genera gráficos con y sin interacción. APRENDE a leerlos instantáneamente. Es la herramienta visual #1 para factoriales — tus estudiantes deben dominarla.", duration:70, resources:[
+        { label:"rcompanion — Two-way ANOVA + interacción", url:"https://rcompanion.org/handbook/G_09.html" },
+      ]},
       { skill:"teaching", title:"DIDÁCTICA: enseñar interacción con ejemplos cotidianos", task:"La interacción cuesta. Usa ejemplo NO estadístico primero: 'azúcar + café' (azúcar mejora café, pero azúcar + jugo de naranja = malo → el efecto del azúcar DEPENDE de con qué). Después traslada a agropecuario. Analogías cotidianas desbloquean el concepto antes de la formalización.", duration:55, resources:[]},
     ]},
   { week:14, phase:"Fase 4 · Diseños factoriales", title:"Semana 14 — Factorial 2k (Folio 11)",
     goals:["Diseños 2^k", "Cálculo de efectos", "Aplicación e interpretación"],
     days:[
-      { skill:"theory", title:"Diseños 2^k — k factores, 2 niveles", task:"2^k: k factores, cada uno 2 niveles (bajo/alto, -/+). 2² = 4 corridas, 2³ = 8, etc. Muy usado en screening (identificar factores importantes). Eficiente. Base de metodología de superficie de respuesta. El profesor anterior tenía carpetas 'Factorial 2k' — es tema central del sílabo.", duration:75, resources:[
-        { label:"Montgomery cap 6 — diseños 2k", url:"https://www.academia.edu/40573222/Dise%C3%B1o_y_an%C3%A1lisis_de_experimentos_Douglas_Montgomery" },
+      { skill:"theory", title:"Diseños 2^k — k factores, 2 niveles", task:"2^k: k factores, cada uno 2 niveles (bajo/alto, -/+). 2² = 4 corridas, 2³ = 8. Muy usado en screening (identificar factores importantes). Eficiente. Base de metodología de superficie de respuesta. El profesor anterior tenía carpetas 'Factorial 2k' — tema central. NIST cap 5 es exhaustivo.", duration:75, resources:[
+        { label:"NIST Handbook — 2-level factorial designs", url:"https://www.itl.nist.gov/div898/handbook/pri/section3/pri3341.htm" },
+        { label:"Penn State STAT 503 — 2^k designs", url:"https://online.stat.psu.edu/stat503/" },
       ]},
-      { skill:"theory", title:"Cálculo de efectos en 2k — método de Yates", task:"Efecto = promedio(nivel alto) - promedio(nivel bajo). Tabla de signos (+/-) para cada efecto principal e interacción. Algoritmo de Yates para cálculo sistemático. Contrastes ortogonales. Como profesor: el método de signos es elegante y enseñable en pizarrón.", duration:70, resources:[]},
-      { skill:"code", title:"Factorial 2k en R", task:"`aov(respuesta ~ A*B*C, data=d)` (el * incluye efectos principales + todas interacciones). `FrF2` package para generar diseños. Interpretar tabla ANOVA con múltiples interacciones. Gráficos de efectos principales + interacción. Practica con ejemplo 2³.", duration:80, resources:[
-        { label:"FrF2 package", url:"https://cran.r-project.org/web/packages/FrF2/FrF2.pdf" },
+      { skill:"theory", title:"Cálculo de efectos en 2k — método de Yates", task:"Efecto = promedio(nivel alto) - promedio(nivel bajo). Tabla de signos (+/-) para cada efecto principal e interacción. Algoritmo de Yates para cálculo sistemático. Contrastes ortogonales. Como profesor: el método de signos es elegante y enseñable en pizarrón. NIST lo detalla con ejemplos.", duration:70, resources:[
+        { label:"NIST Handbook — Yates algorithm / effect estimation", url:"https://www.itl.nist.gov/div898/handbook/pri/section3/pri3361.htm" },
       ]},
-      { skill:"theory", title:"Factorial 2k con repeticiones y sin repeticiones", task:"CON repeticiones: tienes error puro para prueba F. SIN repeticiones (una corrida por combinación): NO hay gl para error → usar gráfico normal de efectos (Daniel) o asumir interacciones altas despreciables. Como profesor: enseña ambos casos y cómo manejar el sin-repetición.", duration:60, resources:[]},
+      { skill:"code", title:"Factorial 2k en R", task:"`aov(respuesta ~ A*B*C, data=d)` (el * incluye efectos principales + todas interacciones). `FrF2` package para generar diseños. Interpretar tabla ANOVA con múltiples interacciones. Gráficos de efectos + interacción. Practica con ejemplo 2³.", duration:80, resources:[
+        { label:"FrF2 package (diseños factoriales fraccionados)", url:"https://cran.r-project.org/web/packages/FrF2/FrF2.pdf" },
+      ]},
+      { skill:"theory", title:"Factorial 2k con y sin repeticiones", task:"CON repeticiones: tienes error puro para prueba F. SIN repeticiones (una corrida por combinación): NO hay gl para error → usar gráfico normal de efectos (Daniel) o asumir interacciones altas despreciables. Como profesor: enseña ambos casos. NIST explica el gráfico de probabilidad normal de efectos.", duration:60, resources:[
+        { label:"NIST Handbook — Normal probability plot of effects", url:"https://www.itl.nist.gov/div898/handbook/pri/section3/pri3391.htm" },
+      ]},
       { skill:"teaching", title:"DIDÁCTICA: la tabla de signos como herramienta", task:"La tabla de signos (+/-) de los 2k es visual y sistemática. Enséñala como 'receta': columnas de signos, multiplicar, sumar, dividir. Los estudiantes que la dominan calculan efectos sin software. Prepara ejercicio manual de un 2² o 2³ completo. Refuerza comprensión antes de R.", duration:55, resources:[]},
     ]},
   { week:15, phase:"Fase 4 · Diseños factoriales", title:"Semana 15 — Factorial 3k (Folio 12)",
     goals:["Diseños 3^k", "Efectos lineales y cuadráticos", "Cuándo 3 niveles"],
     days:[
-      { skill:"theory", title:"Diseños 3^k — cuando necesitas curvatura", task:"3^k: k factores, 3 niveles (bajo/medio/alto). Permite detectar efectos CUADRÁTICOS (curvatura) — clave para encontrar ÓPTIMOS (dosis óptima de fertilizante). 3² = 9 corridas, 3³ = 27. Más costoso que 2k pero captura no-linealidad. El profesor anterior tenía 'Factorial 3k' — dominalo.", duration:75, resources:[
-        { label:"Montgomery cap 9 — diseños 3k", url:"https://www.academia.edu/40573222/Dise%C3%B1o_y_an%C3%A1lisis_de_experimentos_Douglas_Montgomery" },
+      { skill:"theory", title:"Diseños 3^k — cuando necesitas curvatura", task:"3^k: k factores, 3 niveles (bajo/medio/alto). Permite detectar efectos CUADRÁTICOS (curvatura) — clave para encontrar ÓPTIMOS (dosis óptima de fertilizante). 3² = 9 corridas, 3³ = 27. Más costoso que 2k pero captura no-linealidad. El profesor anterior tenía 'Factorial 3k' — dominalo. NIST + Montgomery.", duration:75, resources:[
+        { label:"NIST Handbook — Three-level full factorial designs", url:"https://www.itl.nist.gov/div898/handbook/pri/section3/pri3347.htm" },
+        { label:"Penn State STAT 503 — 3^k designs", url:"https://online.stat.psu.edu/stat503/" },
       ]},
-      { skill:"theory", title:"Descomposición lineal y cuadrática", task:"Con 3 niveles equiespaciados, el efecto se descompone en LINEAL (tendencia recta) + CUADRÁTICO (curvatura). Polinomios ortogonales. Permite responder: ¿la respuesta crece linealmente o hay un óptimo? Crítico en dosis-respuesta agropecuaria.", duration:70, resources:[]},
+      { skill:"theory", title:"Descomposición lineal y cuadrática", task:"Con 3 niveles equiespaciados, el efecto se descompone en LINEAL (tendencia recta) + CUADRÁTICO (curvatura). Polinomios ortogonales. Permite responder: ¿la respuesta crece linealmente o hay un óptimo? Crítico en dosis-respuesta agropecuaria. Penn State trata polinomios ortogonales.", duration:70, resources:[
+        { label:"Penn State STAT 502 — Trend analysis / polynomials", url:"https://online.stat.psu.edu/stat502/lesson/9" },
+      ]},
       { skill:"code", title:"Factorial 3k en R con polinomios ortogonales", task:"`contr.poly()` para contrastes polinómicos. Descomponer efecto en lineal + cuadrático. Interpretar cuál domina. Graficar respuesta vs niveles con curva ajustada. Practica con ejemplo dosis-respuesta (3 dosis de fertilizante).", duration:80, resources:[]},
-      { skill:"theory", title:"2k vs 3k — cuándo cada uno", task:"2k: screening, identificar factores importantes, asume linealidad, económico. 3k: caracterización, encontrar óptimos, captura curvatura, más costoso. Estrategia secuencial: 2k primero (screening) → 3k o superficie respuesta en factores importantes. Como profesor: enseña la estrategia, no solo técnicas aisladas.", duration:60, resources:[]},
+      { skill:"theory", title:"2k vs 3k — cuándo cada uno", task:"2k: screening, identificar factores importantes, asume linealidad, económico. 3k: caracterización, encontrar óptimos, captura curvatura, más costoso. Estrategia secuencial: 2k primero (screening) → 3k o superficie respuesta en factores importantes. Como profesor: enseña la estrategia, no solo técnicas aisladas.", duration:60, resources:[
+        { label:"NIST Handbook — Response surface (RSM) intro", url:"https://www.itl.nist.gov/div898/handbook/pri/section3/pri336.htm" },
+      ]},
       { skill:"teaching", title:"DIDÁCTICA: conectar 3k con optimización real", task:"3k brilla en 'encontrar la dosis óptima'. Ejemplo motivador: '¿cuánto fertilizante maximiza rendimiento SIN desperdiciar?'. La curvatura (cuadrático) revela el óptimo. Conecta con economía agropecuaria (punto de máximo beneficio). Relevancia práctica = motivación estudiantil.", duration:55, resources:[]},
     ]},
   { week:16, phase:"Fase 4 · Diseños factoriales", title:"Semana 16 — Factoriales con testigo adicional",
     goals:["Factorial + 1 testigo", "Factorial + 2 testigos", "Análisis con controles"],
     days:[
-      { skill:"theory", title:"Factorial + testigo(s) — la necesidad práctica", task:"En agronomía a menudo el factorial (ej: 2 fuentes × 3 dosis de N) necesita compararse con un TESTIGO ABSOLUTO (sin fertilizar) o testigo comercial. El profesor anterior tenía carpetas 'Factorial 2k+1 testigo', '2k+2 testigos', '3k+1 testigo', '3k+2 testigos' — es práctica ESTÁNDAR en ensayos agropecuarios ecuatorianos.", duration:75, resources:[]},
-      { skill:"theory", title:"Cómo integrar testigos al análisis", task:"El testigo NO encaja en la estructura factorial (no tiene los niveles del factorial). Solución: análisis como DCA/DBCA con (a×b + testigos) tratamientos, LUEGO descomponer SC de tratamientos en: factorial (efectos + interacción) + testigo vs factorial + entre testigos. Contrastes. Es técnica que pocos textos explican bien.", duration:75, resources:[]},
-      { skill:"code", title:"Factorial + testigo en R", task:"Estructura los datos con tratamientos factoriales + testigo(s) como niveles adicionales. ANOVA general + contrastes que separan: (1) testigo vs resto, (2) estructura factorial. `emmeans` + contrastes personalizados. Practica replicando el enfoque del profesor anterior.", duration:85, resources:[]},
-      { skill:"theory", title:"Interpretación con testigos", task:"Preguntas que responde: ¿el factorial supera al testigo absoluto? (¿vale la pena fertilizar?). ¿La mejor combinación factorial supera al testigo comercial? (¿mi tratamiento es mejor que lo existente?). Como profesor: enseña a responder preguntas AGRONÓMICAS, no solo estadísticas.", duration:60, resources:[]},
+      { skill:"theory", title:"Factorial + testigo(s) — la necesidad práctica", task:"En agronomía el factorial (2 fuentes × 3 dosis de N) a menudo necesita compararse con un TESTIGO ABSOLUTO (sin fertilizar) o testigo comercial. El profesor anterior tenía 'Factorial 2k+1 testigo', '2k+2 testigos', '3k+1 testigo', '3k+2 testigos' — práctica ESTÁNDAR en ensayos agropecuarios ecuatorianos.", duration:75, resources:[
+        { label:"agricolae tutorial — tratamientos adicionales (PDF)", url:"https://cran.r-project.org/web/packages/agricolae/vignettes/tutorial.pdf" },
+      ]},
+      { skill:"theory", title:"Cómo integrar testigos al análisis", task:"El testigo NO encaja en la estructura factorial (no tiene los niveles del factorial). Solución: análisis como DCA/DBCA con (a×b + testigos) tratamientos, LUEGO descomponer SC de tratamientos en: factorial (efectos + interacción) + testigo vs factorial + entre testigos. Contrastes. Técnica que pocos textos explican bien.", duration:75, resources:[]},
+      { skill:"code", title:"Factorial + testigo en R", task:"Estructura los datos con tratamientos factoriales + testigo(s) como niveles adicionales. ANOVA general + contrastes que separan: (1) testigo vs resto, (2) estructura factorial. `emmeans` + contrastes personalizados. Practica replicando el enfoque del profesor anterior.", duration:85, resources:[
+        { label:"emmeans — contrastes personalizados", url:"https://cran.r-project.org/web/packages/emmeans/vignettes/comparisons.html" },
+      ]},
+      { skill:"theory", title:"Interpretación con testigos", task:"Preguntas que responde: ¿el factorial supera al testigo absoluto? (¿vale la pena fertilizar?). ¿La mejor combinación supera al testigo comercial? (¿mi tratamiento es mejor que lo existente?). Como profesor: enseña a responder preguntas AGRONÓMICAS, no solo estadísticas.", duration:60, resources:[]},
       { skill:"teaching", title:"DIDÁCTICA: por qué los testigos importan (relevancia local)", task:"Este tema es MUY ecuatoriano/LATAM agropecuario (los textos gringos lo tocan poco). Es donde TU curso aporta valor local. Prepara ejemplos reales de tesis de la carrera (ensayos con testigo absoluto + comercial). Los estudiantes verán aplicación directa a sus futuras tesis. Alto valor percibido.", duration:55, resources:[]},
     ]},
   { week:17, phase:"Fase 4 · Diseños factoriales", title:"Semana 17 — Factorial en distintos diseños base",
     goals:["Factorial en DCA vs DBCA", "Factorial en parcelas divididas", "Elegir la estructura correcta"],
     days:[
-      { skill:"theory", title:"El factorial es un ARREGLO, no un diseño base", task:"Distinción CLAVE que confunde a muchos: 'factorial' es cómo se ESTRUCTURAN los tratamientos (combinaciones). El DISEÑO BASE (cómo se aleatoriza) puede ser DCA, DBCA, cuadrado latino, parcelas divididas. Ej: 'factorial 2×3 en DBCA'. Como profesor: esta distinción da claridad conceptual total al curso.", duration:75, resources:[]},
+      { skill:"theory", title:"El factorial es un ARREGLO, no un diseño base", task:"Distinción CLAVE que confunde a muchos: 'factorial' es cómo se ESTRUCTURAN los tratamientos (combinaciones). El DISEÑO BASE (cómo se aleatoriza) puede ser DCA, DBCA, cuadrado latino, parcelas divididas. Ej: 'factorial 2×3 en DBCA'. Como profesor: esta distinción da claridad conceptual total al curso.", duration:75, resources:[
+        { label:"Penn State STAT 502 — Lesson 7 (Factorial treatment structure)", url:"https://online.stat.psu.edu/stat502/lesson/7" },
+      ]},
       { skill:"theory", title:"Factorial en DCA vs factorial en DBCA", task:"Factorial en DCA: combinaciones asignadas 100% al azar. Factorial en DBCA: combinaciones aleatorizadas dentro de bloques (controla variabilidad). El modelo agrega efecto bloque. Muy común en campo (hay gradientes → bloquear). Practica ambos.", duration:65, resources:[]},
-      { skill:"code", title:"Factoriales en distintos diseños base en R", task:"DCA factorial: `aov(y ~ A*B)`. DBCA factorial: `aov(y ~ bloque + A*B)`. Parcelas divididas factorial: con Error(). Practica los 3 con el mismo conjunto conceptual de factores, viendo cómo cambia el modelo según diseño base. Consolida la comprensión integral.", duration:85, resources:[]},
-      { skill:"theory", title:"Árbol de decisión: qué diseño usar", task:"Construye el ÁRBOL COMPLETO: ¿unidades homogéneas? → DCA. ¿Un gradiente? → DBCA. ¿Dos gradientes? → Cuadrado Latino. ¿Un factor difícil de aleatorizar? → Parcelas Divididas. ¿Sujeto como su control? → Cross-Over. ¿Varios factores? → Factorial (sobre el diseño base apropiado). Este árbol es tu SÍNTESIS del curso.", duration:60, resources:[]},
-      { skill:"teaching", title:"DIDÁCTICA: el mapa mental integrador", task:"Diseña UN diagrama que integre TODO: diseños base (filas) × arreglos de tratamientos (columnas). Los estudiantes ven que 15 'temas' son en realidad combinaciones de pocos principios. Este mapa mental es tu obra maestra pedagógica — reduce la ansiedad y da visión de conjunto. Vale oro para tus clases.", duration:55, resources:[]},
+      { skill:"code", title:"Factoriales en distintos diseños base en R", task:"DCA factorial: `aov(y ~ A*B)`. DBCA factorial: `aov(y ~ bloque + A*B)`. Parcelas divididas factorial: con Error(). Practica los 3 con los mismos factores, viendo cómo cambia el modelo según diseño base. Consolida la comprensión integral.", duration:85, resources:[]},
+      { skill:"theory", title:"Árbol de decisión: qué diseño usar", task:"Construye el ÁRBOL COMPLETO: ¿unidades homogéneas? → DCA. ¿Un gradiente? → DBCA. ¿Dos gradientes? → Cuadrado Latino. ¿Un factor difícil de aleatorizar? → Parcelas Divididas. ¿Sujeto como su control? → Cross-Over. ¿Varios factores? → Factorial (sobre el diseño base apropiado). Este árbol es tu SÍNTESIS del curso.", duration:60, resources:[
+        { label:"NIST Handbook — Choosing an experimental design", url:"https://www.itl.nist.gov/div898/handbook/pri/section3/pri32.htm" },
+      ]},
+      { skill:"teaching", title:"DIDÁCTICA: el mapa mental integrador", task:"Diseña UN diagrama que integre TODO: diseños base (filas) × arreglos de tratamientos (columnas). Los estudiantes ven que 15 'temas' son combinaciones de pocos principios. Este mapa mental es tu obra maestra pedagógica — reduce la ansiedad y da visión de conjunto. Vale oro para tus clases.", duration:55, resources:[]},
     ]},
 
   // ==== FASE 5 · SEMANAS 18-20: Regresión y correlación ====
   { week:18, phase:"Fase 5 · Regresión y correlación", title:"Semana 18 — Correlación (Folio 15)",
     goals:["Correlación de Pearson", "Correlación de Spearman", "Interpretación y errores comunes"],
     days:[
-      { skill:"theory", title:"Correlación de Pearson — asociación lineal", task:"r de Pearson: mide fuerza y dirección de asociación LINEAL entre 2 variables continuas. Rango [-1, +1]. Supuestos: linealidad, normalidad bivariada, homocedasticidad. r² = proporción de varianza compartida. El profesor anterior tenía 'CORRELACIÓN DE PEARSON.R' — tema del sílabo (Folio 15).", duration:70, resources:[
-        { label:"Correlación Pearson", url:"https://www.jmp.com/es_co/statistics-knowledge-portal/what-is-correlation.html" },
+      { skill:"theory", title:"Correlación de Pearson — asociación lineal", task:"r de Pearson: mide fuerza y dirección de asociación LINEAL entre 2 variables continuas. Rango [-1, +1]. Supuestos: linealidad, normalidad bivariada, homocedasticidad. r² = proporción de varianza compartida. El profesor anterior tenía 'CORRELACIÓN DE PEARSON.R' — Folio 15. Penn State STAT 501 + Handbook Biological Stats.", duration:70, resources:[
+        { label:"Penn State STAT 501 — Correlation", url:"https://online.stat.psu.edu/stat501/lesson/1/1.6" },
+        { label:"Handbook of Biological Statistics — Correlation & regression", url:"http://www.biostathandbook.com/linearregression.html" },
       ]},
-      { skill:"theory", title:"Correlación de Spearman — no paramétrica", task:"ρ de Spearman: correlación de RANGOS. No asume normalidad ni linealidad (solo monotonía). Robusta a outliers. Usar cuando: datos ordinales, no normales, relación monótona no lineal. El profesor anterior tenía 'CORRELACIÓN DE SPEARMAN.R'. Como profesor: enseña cuándo Pearson vs Spearman.", duration:65, resources:[]},
-      { skill:"theory", title:"Correlación NO es causalidad — el mantra", task:"Correlación alta NO implica causa. Confusores, correlaciones espurias, causalidad inversa. Ejemplos famosos (helados y ahogamientos correlacionan — por el calor, no causalidad). Como profesor: MARTILLA este concepto — es el error #1 en interpretación de investigación.", duration:55, resources:[]},
+      { skill:"theory", title:"Correlación de Spearman — no paramétrica", task:"ρ de Spearman: correlación de RANGOS. No asume normalidad ni linealidad (solo monotonía). Robusta a outliers. Usar cuando: datos ordinales, no normales, relación monótona no lineal. El profesor anterior tenía 'CORRELACIÓN DE SPEARMAN.R'. Como profesor: enseña cuándo Pearson vs Spearman.", duration:65, resources:[
+        { label:"Handbook of Biological Statistics — Spearman rank correlation", url:"http://www.biostathandbook.com/spearman.html" },
+      ]},
+      { skill:"theory", title:"Correlación NO es causalidad — el mantra", task:"Correlación alta NO implica causa. Confusores, correlaciones espurias, causalidad inversa. Ejemplos famosos (helados y ahogamientos correlacionan — por el calor). Como profesor: MARTILLA este concepto — es el error #1 en interpretación de investigación.", duration:55, resources:[]},
       { skill:"code", title:"Correlación en R + visualización", task:"`cor(x, y, method='pearson')`. `cor.test()` para significancia. `method='spearman'` para Spearman. Matriz de correlación `cor(datos)`. Visualizar con `corrplot`. Scatterplot SIEMPRE (Anscombe's quartet muestra por qué). Practica ambos métodos.", duration:70, resources:[
-        { label:"Anscombe's quartet", url:"https://en.wikipedia.org/wiki/Anscombe%27s_quartet" },
+        { label:"rcompanion — Correlation", url:"https://rcompanion.org/rcompanion/e_02.html" },
       ]},
-      { skill:"teaching", title:"DIDÁCTICA: Anscombe's quartet como lección", task:"El cuarteto de Anscombe (4 datasets con misma r pero gráficos completamente distintos) es la MEJOR lección sobre por qué graficar siempre. Preséntalo a tus estudiantes: mismo r=0.816, gráficos totalmente diferentes. Enseña humildad estadística y el valor de la visualización. Impactante pedagógicamente.", duration:50, resources:[]},
+      { skill:"teaching", title:"DIDÁCTICA: Anscombe's quartet como lección", task:"El cuarteto de Anscombe (4 datasets con misma r pero gráficos completamente distintos) es la MEJOR lección sobre por qué graficar siempre. Preséntalo: mismo r=0.816, gráficos totalmente diferentes. Enseña humildad estadística y el valor de la visualización. En R está integrado: `data(anscombe)`.", duration:50, resources:[]},
     ]},
   { week:19, phase:"Fase 5 · Regresión y correlación", title:"Semana 19 — Regresión lineal simple (Folio 16)",
     goals:["Modelo de regresión", "Mínimos cuadrados", "Diagnóstico e interpretación"],
     days:[
-      { skill:"theory", title:"Regresión lineal simple — predecir y modelar", task:"Y = β0 + β1X + ε. β0 intercepto, β1 pendiente (cambio en Y por unidad de X). Objetivo: modelar relación, predecir, cuantificar efecto. El profesor anterior tenía 'Regresion.R'. Folio 16 del sílabo. Diferencia con correlación: regresión tiene DIRECCIÓN (X predice Y) y permite PREDICCIÓN.", duration:70, resources:[
-        { label:"Montgomery cap 10 — regresión", url:"https://www.academia.edu/40573222/Dise%C3%B1o_y_an%C3%A1lisis_de_experimentos_Douglas_Montgomery" },
+      { skill:"theory", title:"Regresión lineal simple — predecir y modelar", task:"Y = β0 + β1X + ε. β0 intercepto, β1 pendiente (cambio en Y por unidad de X). Objetivo: modelar relación, predecir, cuantificar efecto. El profesor anterior tenía 'Regresion.R'. Folio 16. Diferencia con correlación: regresión tiene DIRECCIÓN (X predice Y) y permite PREDICCIÓN. Penn State STAT 501 es EXCELENTE.", duration:70, resources:[
+        { label:"Penn State STAT 501 — Simple linear regression", url:"https://online.stat.psu.edu/stat501/lesson/1" },
+        { label:"MIT OCW 18.05 — Linear regression (slides)", url:"https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/pages/class-slides/" },
+        { label:"StatQuest — Linear Regression (video)", url:"https://www.youtube.com/watch?v=nk2CQITm_eo" },
       ]},
-      { skill:"theory", title:"Método de mínimos cuadrados (OLS)", task:"Estima β0, β1 minimizando suma de residuales al cuadrado. Fórmulas cerradas. Interpretación geométrica (recta que minimiza distancias verticales). r² = bondad de ajuste. Como profesor: la INTUICIÓN de 'mejor recta' (minimizar errores) es enseñable visualmente.", duration:65, resources:[]},
-      { skill:"code", title:"Regresión en R — lm() completo", task:"`modelo <- lm(y ~ x, data=d)`. `summary(modelo)`: coeficientes, R², p-values, error estándar. `predict()` para predicciones + IC. `plot(modelo)` para diagnóstico (4 gráficos). Practica interpretación COMPLETA de la salida de lm().", duration:75, resources:[]},
-      { skill:"theory", title:"Supuestos y diagnóstico de regresión", task:"LINEALIDAD (residuales vs ajustados sin patrón), NORMALIDAD de residuales (Q-Q), HOMOCEDASTICIDAD (varianza constante), INDEPENDENCIA (Durbin-Watson). Los 4 gráficos de plot(modelo). Como profesor: enseña a LEER estos diagnósticos — separa análisis serio de superficial.", duration:60, resources:[]},
-      { skill:"teaching", title:"DIDÁCTICA: regresión como herramienta de tesis", task:"Tus estudiantes usarán regresión en sus tesis (relación dosis-rendimiento, edad-peso, etc.). Prepara ejemplos de sus áreas. Enseña el REPORTE correcto: ecuación, R², significancia, gráfico con recta + banda de confianza, interpretación agronómica. Conectar con su futuro académico motiva.", duration:55, resources:[]},
+      { skill:"theory", title:"Método de mínimos cuadrados (OLS)", task:"Estima β0, β1 minimizando suma de residuales al cuadrado. Fórmulas cerradas. Interpretación geométrica (recta que minimiza distancias verticales). r² = bondad de ajuste. Como profesor: la INTUICIÓN de 'mejor recta' (minimizar errores) es enseñable visualmente. Penn State 1.2-1.3.", duration:65, resources:[
+        { label:"Penn State STAT 501 — 1.3 (Least squares)", url:"https://online.stat.psu.edu/stat501/lesson/1/1.3" },
+      ]},
+      { skill:"code", title:"Regresión en R — lm() completo", task:"`modelo <- lm(y ~ x, data=d)`. `summary(modelo)`: coeficientes, R², p-values, error estándar. `predict()` para predicciones + IC. `plot(modelo)` para diagnóstico (4 gráficos). Practica interpretación COMPLETA de la salida de lm().", duration:75, resources:[
+        { label:"rcompanion — Linear regression en R", url:"https://rcompanion.org/rcompanion/e_01.html" },
+      ]},
+      { skill:"theory", title:"Supuestos y diagnóstico de regresión", task:"LINEALIDAD (residuales vs ajustados sin patrón), NORMALIDAD de residuales (Q-Q), HOMOCEDASTICIDAD (varianza constante), INDEPENDENCIA (Durbin-Watson). Los 4 gráficos de plot(modelo). Como profesor: enseña a LEER estos diagnósticos — separa análisis serio de superficial. Penn State Lesson 4 (model checking).", duration:60, resources:[
+        { label:"Penn State STAT 501 — Lesson 4 (Residual diagnostics)", url:"https://online.stat.psu.edu/stat501/lesson/4" },
+      ]},
+      { skill:"teaching", title:"DIDÁCTICA: regresión como herramienta de tesis", task:"Tus estudiantes usarán regresión en sus tesis (dosis-rendimiento, edad-peso). Prepara ejemplos de sus áreas. Enseña el REPORTE correcto: ecuación, R², significancia, gráfico con recta + banda de confianza, interpretación agronómica. Conectar con su futuro académico motiva.", duration:55, resources:[]},
     ]},
   { week:20, phase:"Fase 5 · Regresión y correlación", title:"Semana 20 — Regresión múltiple y polinomial",
     goals:["Regresión múltiple", "Regresión polinomial (curvatura)", "Selección de modelo"],
     days:[
-      { skill:"theory", title:"Regresión múltiple — varios predictores", task:"Y = β0 + β1X1 + β2X2 + ... + ε. Modela efecto de MÚLTIPLES variables. Interpretación: βi = efecto de Xi manteniendo las demás constantes. Multicolinealidad (predictores correlacionados) es el problema principal. Extensión natural de regresión simple.", duration:70, resources:[]},
-      { skill:"theory", title:"Regresión polinomial — capturar curvatura", task:"Y = β0 + β1X + β2X² + ε. Captura relaciones curvas (dosis-respuesta con óptimo). Conecta con factorial 3k (curvatura). Encontrar máximo/mínimo (derivada = 0). Muy útil en agronomía (dosis óptima). Como profesor: conecta con superficie de respuesta.", duration:65, resources:[]},
-      { skill:"code", title:"Regresión múltiple y polinomial en R", task:"Múltiple: `lm(y ~ x1 + x2 + x3)`. Polinomial: `lm(y ~ poly(x, 2))` o `lm(y ~ x + I(x^2))`. VIF para multicolinealidad (`car::vif()`). Comparar modelos (R² ajustado, AIC). Encontrar óptimo de polinomial. Practica con datos multivariados.", duration:80, resources:[]},
-      { skill:"theory", title:"Selección de modelo — parsimonia", task:"Más variables NO siempre mejor (overfitting). R² ajustado penaliza complejidad. AIC/BIC. Métodos: stepwise (con cautela), mejor subconjunto. Principio de PARSIMONIA (Occam): modelo más simple que explique bien. Como profesor: enseña que un buen modelo es SIMPLE e INTERPRETABLE, no el de mayor R².", duration:60, resources:[]},
-      { skill:"teaching", title:"DIDÁCTICA: cierre integrador regresión-ANOVA", task:"Revelación pedagógica poderosa: ANOVA y regresión son EL MISMO modelo lineal (ANOVA = regresión con predictores categóricos). Mostrar esto UNIFICA todo el curso. `lm()` hace ambos. Es el 'momento ajá' que deja a estudiantes con visión profunda. Prepara esta conexión como clímax conceptual del curso.", duration:55, resources:[]},
+      { skill:"theory", title:"Regresión múltiple — varios predictores", task:"Y = β0 + β1X1 + β2X2 + ... + ε. Modela efecto de MÚLTIPLES variables. Interpretación: βi = efecto de Xi manteniendo las demás constantes. Multicolinealidad (predictores correlacionados) es el problema principal. Extensión natural de regresión simple. Penn State STAT 501 Lessons 5-7.", duration:70, resources:[
+        { label:"Penn State STAT 501 — Multiple regression", url:"https://online.stat.psu.edu/stat501/lesson/5" },
+      ]},
+      { skill:"theory", title:"Regresión polinomial — capturar curvatura", task:"Y = β0 + β1X + β2X² + ε. Captura relaciones curvas (dosis-respuesta con óptimo). Conecta con factorial 3k (curvatura). Encontrar máximo/mínimo (derivada = 0). Muy útil en agronomía (dosis óptima). Como profesor: conecta con superficie de respuesta. Penn State 9.8.", duration:65, resources:[
+        { label:"Penn State STAT 501 — Polynomial regression", url:"https://online.stat.psu.edu/stat501/lesson/9/9.8" },
+      ]},
+      { skill:"code", title:"Regresión múltiple y polinomial en R", task:"Múltiple: `lm(y ~ x1 + x2 + x3)`. Polinomial: `lm(y ~ poly(x, 2))` o `lm(y ~ x + I(x^2))`. VIF para multicolinealidad (`car::vif()`). Comparar modelos (R² ajustado, AIC). Encontrar óptimo de polinomial. Practica con datos multivariados.", duration:80, resources:[
+        { label:"rcompanion — Multiple regression", url:"https://rcompanion.org/rcompanion/e_05.html" },
+      ]},
+      { skill:"theory", title:"Selección de modelo — parsimonia", task:"Más variables NO siempre mejor (overfitting). R² ajustado penaliza complejidad. AIC/BIC. Métodos: stepwise (con cautela), mejor subconjunto. Principio de PARSIMONIA (Occam): modelo más simple que explique bien. Como profesor: enseña que un buen modelo es SIMPLE e INTERPRETABLE, no el de mayor R².", duration:60, resources:[
+        { label:"Penn State STAT 501 — Model selection", url:"https://online.stat.psu.edu/stat501/lesson/10" },
+      ]},
+      { skill:"teaching", title:"DIDÁCTICA: cierre integrador regresión-ANOVA", task:"Revelación pedagógica poderosa: ANOVA y regresión son EL MISMO modelo lineal (ANOVA = regresión con predictores categóricos). Mostrar esto UNIFICA todo el curso. `lm()` hace ambos. Es el 'momento ajá' que deja a estudiantes con visión profunda. Prepara esta conexión como clímax conceptual del curso.", duration:55, resources:[
+        { label:"Penn State STAT 502 — 8.8 (ANOVA as regression / GLM)", url:"https://online.stat.psu.edu/stat502/lesson/8" },
+      ]},
     ]},
 
   // ==== FASE 6 · SEMANAS 21-22: Herramientas y no-paramétrica ====
   { week:21, phase:"Fase 6 · Herramientas completas", title:"Semana 21 — Estadística no-paramétrica",
     goals:["Alternativas cuando fallan supuestos", "Kruskal-Wallis, Friedman", "Mann-Whitney, Wilcoxon"],
     days:[
-      { skill:"theory", title:"Cuándo ir a no-paramétrica", task:"Cuando: normalidad violada (n pequeño), datos ordinales, outliers extremos, escalas no continuas. Ventaja: menos supuestos. Desventaja: menos potencia si los datos SÍ son normales. Como profesor: enseña que NO son 'inferiores' — son apropiadas para ciertos datos.", duration:65, resources:[]},
-      { skill:"theory", title:"Las pruebas no-paramétricas clave", task:"MANN-WHITNEY U (= Wilcoxon rank-sum): 2 grupos independientes (equivalente no-param de t independiente). WILCOXON signed-rank: 2 grupos pareados. KRUSKAL-WALLIS: 3+ grupos independientes (equivalente no-param de ANOVA una vía). FRIEDMAN: 3+ grupos en bloques (equivalente no-param de DBCA). Mapa claro paramétrico↔no-paramétrico.", duration:70, resources:[]},
-      { skill:"code", title:"No-paramétricas en R", task:"`wilcox.test()` (Mann-Whitney/Wilcoxon). `kruskal.test()` + post-hoc `kruskalmc` o `dunn.test`. `friedman.test()`. Practica con datos que violan normalidad. Compara resultados con la versión paramétrica (cuando ambas aplican).", duration:75, resources:[
-        { label:"dunn.test package", url:"https://cran.r-project.org/web/packages/dunn.test/dunn.test.pdf" },
+      { skill:"theory", title:"Cuándo ir a no-paramétrica", task:"Cuando: normalidad violada (n pequeño), datos ordinales, outliers extremos, escalas no continuas. Ventaja: menos supuestos. Desventaja: menos potencia si los datos SÍ son normales. Como profesor: enseña que NO son 'inferiores' — son apropiadas para ciertos datos. rcompanion tiene una sección enorme y clara.", duration:65, resources:[
+        { label:"rcompanion — Nonparametric statistics (sección completa)", url:"https://rcompanion.org/handbook/F_00.html" },
+        { label:"Handbook of Biological Statistics — Kruskal-Wallis", url:"http://www.biostathandbook.com/kruskalwallis.html" },
       ]},
-      { skill:"theory", title:"Chi-cuadrado — datos categóricos", task:"Chi-cuadrado de independencia (tablas de contingencia): ¿dos variables categóricas están asociadas? Bondad de ajuste: ¿los datos siguen una distribución esperada? Muy usado con datos de conteo/proporciones (ej: proporción de plantas enfermas por tratamiento). Complemento importante.", duration:60, resources:[]},
-      { skill:"teaching", title:"DIDÁCTICA: la tabla de equivalencias", task:"Prepara una TABLA de doble entrada: paramétrica ↔ no-paramétrica (t independiente↔Mann-Whitney, ANOVA↔Kruskal-Wallis, DBCA↔Friedman). Tus estudiantes la usarán como referencia toda su carrera. Herramienta didáctica de alto valor. Un profesor que da buenos 'mapas' es recordado.", duration:50, resources:[]},
+      { skill:"theory", title:"Las pruebas no-paramétricas clave", task:"MANN-WHITNEY U (= Wilcoxon rank-sum): 2 grupos independientes. WILCOXON signed-rank: 2 grupos pareados. KRUSKAL-WALLIS: 3+ grupos independientes (equivalente no-param de ANOVA una vía). FRIEDMAN: 3+ grupos en bloques (equivalente no-param de DBCA). Mapa claro paramétrico↔no-paramétrico.", duration:70, resources:[
+        { label:"rcompanion — Mann-Whitney, Kruskal-Wallis, Friedman", url:"https://rcompanion.org/handbook/F_00.html" },
+      ]},
+      { skill:"code", title:"No-paramétricas en R", task:"`wilcox.test()` (Mann-Whitney/Wilcoxon). `kruskal.test()` + post-hoc `dunn.test` o `agricolae::kruskal`. `friedman.test()`. Practica con datos que violan normalidad. Compara con la versión paramétrica cuando ambas aplican.", duration:75, resources:[
+        { label:"rcompanion — post-hoc no-paramétrico (Dunn)", url:"https://rcompanion.org/handbook/F_08.html" },
+      ]},
+      { skill:"theory", title:"Chi-cuadrado — datos categóricos", task:"Chi-cuadrado de independencia (tablas de contingencia): ¿dos variables categóricas están asociadas? Bondad de ajuste: ¿los datos siguen una distribución esperada? Muy usado con datos de conteo (proporción de plantas enfermas por tratamiento). NIST + Handbook Biological Stats.", duration:60, resources:[
+        { label:"Handbook of Biological Statistics — Chi-square test", url:"http://www.biostathandbook.com/chiind.html" },
+        { label:"NIST Handbook — Chi-square goodness of fit", url:"https://www.itl.nist.gov/div898/handbook/prc/section2/prc211.htm" },
+      ]},
+      { skill:"teaching", title:"DIDÁCTICA: la tabla de equivalencias", task:"Prepara una TABLA de doble entrada: paramétrica ↔ no-paramétrica (t independiente↔Mann-Whitney, ANOVA↔Kruskal-Wallis, DBCA↔Friedman). Tus estudiantes la usarán toda su carrera. Herramienta didáctica de alto valor. Un profesor que da buenos 'mapas' es recordado.", duration:50, resources:[]},
     ]},
   { week:22, phase:"Fase 6 · Herramientas completas", title:"Semana 22 — Software: InfoStat, R avanzado, Python",
     goals:["Dominar InfoStat (usado en LATAM)", "R workflows reproducibles", "Python como complemento"],
     days:[
       { skill:"code", title:"InfoStat — la herramienta amigable LATAM", task:"InfoStat (Universidad Nacional de Córdoba, Argentina): interfaz gráfica, muy usado en agronomía hispana. Menús para ANOVA, diseños, comparaciones. Gratis versión estudiantil. Como profesor: MUCHOS estudiantes lo prefieren sobre R (menos código). Dominalo para enseñar a quienes le temen a la programación.", duration:75, resources:[
-        { label:"InfoStat", url:"https://www.infostat.com.ar/" },
+        { label:"InfoStat (descarga + manuales)", url:"https://www.infostat.com.ar/" },
       ]},
       { skill:"code", title:"R workflows reproducibles con RMarkdown/Quarto", task:"Enseña a tus estudiantes a documentar análisis reproducibles: código + resultados + interpretación en un documento. RMarkdown/Quarto. Genera reportes PDF/HTML. Es habilidad PROFESIONAL que los distingue. Prepara plantilla de 'informe de análisis experimental'.", duration:70, resources:[
-        { label:"Quarto", url:"https://quarto.org/" },
+        { label:"Quarto (documentación oficial)", url:"https://quarto.org/" },
       ]},
       { skill:"code", title:"Python como complemento (statsmodels, pingouin)", task:"Aunque R domina en estadística agropecuaria, Python crece. `statsmodels` (ANOVA, regresión), `pingouin` (pruebas + post-hoc amigables), `scipy.stats`. Para estudiantes que ya saben Python. Como profesor moderno: ofrecer ambos lenguajes es valor agregado.", duration:65, resources:[
-        { label:"pingouin (stats en Python)", url:"https://pingouin-stats.org/" },
+        { label:"pingouin (stats en Python, docs)", url:"https://pingouin-stats.org/" },
+        { label:"statsmodels — ANOVA y regresión", url:"https://www.statsmodels.org/stable/index.html" },
       ]},
       { skill:"code", title:"Comparación de resultados entre software", task:"Ejecuta el MISMO análisis (un DBCA) en R, InfoStat y Python. Verifica que dan resultados idénticos. Enseña a estudiantes que el software es HERRAMIENTA — lo importante es entender el análisis. Reduce la 'magia' del software.", duration:70, resources:[]},
       { skill:"teaching", title:"DIDÁCTICA: no crear dependencia de un solo software", task:"Filosofía docente: enseña el CONCEPTO primero, software después. Un estudiante que entiende ANOVA puede usarlo en cualquier software. Uno que solo sabe 'clickear en InfoStat' está perdido si cambia de herramienta. Prepara tu discurso sobre 'entender > memorizar clicks'.", duration:50, resources:[]},
@@ -6450,17 +6599,26 @@ const DEX = [
   { week:23, phase:"Fase 7 · Práctica docente", title:"Semana 23 — Análisis completo de experimentos reales",
     goals:["Integrar todo en casos reales", "Del problema al reporte", "Preparar casos de enseñanza"],
     days:[
-      { skill:"analysis", title:"Caso integrador 1: experimento agrícola completo", task:"Toma un experimento REAL (tesis agropecuaria, dataset público, o simulado realista): ej. 'efecto de 4 dosis de fertilizante × 2 variedades sobre rendimiento de maíz, en DBCA'. Análisis COMPLETO: exploración → modelo → supuestos → ANOVA → interacción → post-hoc → gráficos → conclusión agronómica → reporte. Es el tipo de análisis que enseñarás Y que tus estudiantes harán en tesis.", duration:120, resources:[]},
+      { skill:"analysis", title:"Caso integrador 1: experimento agrícola completo", task:"Toma un experimento REAL (tesis agropecuaria, dataset público, o simulado realista): ej. 'efecto de 4 dosis de fertilizante × 2 variedades sobre rendimiento de maíz, en DBCA'. Análisis COMPLETO: exploración → modelo → supuestos → ANOVA → interacción → post-hoc → gráficos → conclusión agronómica → reporte. Es el tipo de análisis que enseñarás Y que tus estudiantes harán en tesis. agricolae tiene datasets agrícolas reales incluidos.", duration:120, resources:[
+        { label:"agricolae — datasets agrícolas incluidos (PDF)", url:"https://cran.r-project.org/web/packages/agricolae/vignettes/tutorial.pdf" },
+        { label:"NIST Handbook — DOE case studies", url:"https://www.itl.nist.gov/div898/handbook/pri/section6/pri6.htm" },
+      ]},
       { skill:"analysis", title:"Caso integrador 2: experimento pecuario (rumiantes)", task:"Dado que la carrera enfatiza producción de rumiantes: ej. 'efecto de 3 dietas sobre ganancia de peso en ovinos, diseño cross-over con 3 períodos'. Análisis completo considerando carryover. Conecta con la especialidad del docente titular. Prepara este caso como material de clase.", duration:120, resources:[]},
-      { skill:"teaching", title:"Preparar tu banco de datasets de enseñanza", task:"Un buen profesor tiene DATASETS listos para cada diseño. Recopila/crea: 1 dataset por cada diseño (DCA, DBCA, DCL, split-plot, cross-over, factorial 2k, 3k, con testigos). Documentados, con contexto agropecuario. Es tu ARSENAL docente reutilizable cada semestre. Inviértele tiempo ahora.", duration:90, resources:[]},
-      { skill:"teaching", title:"Diseñar evaluaciones (exámenes y proyectos)", task:"El sílabo indica evaluaciones escritas (exámenes) + trabajos. Diseña: (1) Preguntas conceptuales (¿cuándo usar DBCA vs DCA?). (2) Ejercicios de análisis (dado un dataset, analiza). (3) Proyecto final (diseñar + analizar un experimento propio). Rúbricas claras. Buena evaluación = buen aprendizaje.", duration:90, resources:[]},
+      { skill:"teaching", title:"Preparar tu banco de datasets de enseñanza", task:"Un buen profesor tiene DATASETS listos para cada diseño. Recopila/crea: 1 dataset por cada diseño (DCA, DBCA, DCL, split-plot, cross-over, factorial 2k, 3k, con testigos). Documentados, con contexto agropecuario. Es tu ARSENAL docente reutilizable cada semestre. agricolae y ExpDes traen varios para empezar.", duration:90, resources:[
+        { label:"ExpDes — datasets de ejemplo (PDF)", url:"https://cran.r-project.org/web/packages/ExpDes/ExpDes.pdf" },
+      ]},
+      { skill:"teaching", title:"Diseñar evaluaciones (exámenes y proyectos)", task:"El sílabo indica evaluaciones escritas (exámenes) + trabajos. Diseña: (1) Preguntas conceptuales (¿cuándo usar DBCA vs DCA?). (2) Ejercicios de análisis (dado un dataset, analiza). (3) Proyecto final (diseñar + analizar un experimento propio). Rúbricas claras. Penn State STAT 502 tiene exámenes de ejemplo para inspirarte.", duration:90, resources:[
+        { label:"Penn State STAT 502 — course structure (referencia)", url:"https://online.stat.psu.edu/stat502/" },
+      ]},
     ]},
   { week:24, phase:"Fase 7 · Práctica docente", title:"Semana 24 — Síntesis, material didáctico y dominio",
     goals:["Consolidar dominio total", "Material de clase completo", "Confianza para enseñar"],
     days:[
       { skill:"teaching", title:"Preparar tu material de clase completo", task:"Consolida: slides por tema, scripts R comentados, datasets, ejercicios graduados, exámenes, rúbricas, el 'mapa mental integrador' (Sem 17). Organiza por las 16 semanas del sílabo UPEC. Tener el material LISTO antes de empezar a enseñar = confianza + calidad. Es tu inversión docente.", duration:120, resources:[]},
-      { skill:"teaching", title:"Anticipar preguntas difíciles de estudiantes", task:"Lista las 20 preguntas MÁS PROBABLES/DIFÍCILES que te harán: '¿por qué n-1?', '¿qué es realmente un grado de libertad?', '¿por qué la interacción invalida efectos principales?', '¿cuándo Tukey vs Duncan?'. Prepara respuestas claras. Un profesor que responde bien preguntas difíciles gana respeto instantáneo.", duration:90, resources:[]},
-      { skill:"analysis", title:"Auto-evaluación: ¿dominas para enseñar?", task:"Test honesto: por cada tema del sílabo, ¿puedes (1) explicarlo sin notas?, (2) derivarlo en pizarrón?, (3) analizarlo en R en vivo?, (4) responder preguntas inesperadas? Los temas donde dudes → refuerza ANTES de enseñarlos. Enseñar expone lagunas — mejor descubrirlas ahora.", duration:75, resources:[]},
+      { skill:"teaching", title:"Anticipar preguntas difíciles de estudiantes", task:"Lista las 20 preguntas MÁS PROBABLES/DIFÍCILES: '¿por qué n-1?', '¿qué es realmente un grado de libertad?', '¿por qué la interacción invalida efectos principales?', '¿cuándo Tukey vs Duncan?'. Prepara respuestas claras. Un profesor que responde bien preguntas difíciles gana respeto instantáneo.", duration:90, resources:[
+        { label:"Penn State STAT 502 — repaso integral", url:"https://online.stat.psu.edu/stat502/" },
+      ]},
+      { skill:"analysis", title:"Auto-evaluación: ¿dominas para enseñar?", task:"Test honesto: por cada tema del sílabo, ¿puedes (1) explicarlo sin notas?, (2) derivarlo en pizarrón?, (3) analizarlo en R en vivo?, (4) responder preguntas inesperadas? Los temas donde dudes → refuerza ANTES de enseñarlos. Enseñar expone lagunas — mejor descubrirlas ahora. Usa el quiz DEX de Auto-evaluación de la plataforma.", duration:75, resources:[]},
       { skill:"teaching", title:"Tu filosofía como profesor de estadística", task:"Reflexión final: ¿qué tipo de profesor quieres ser? Sugerencia: el que hace la estadística COMPRENSIBLE y ÚTIL (no memorística ni temida). El que conecta con problemas reales agropecuarios. El que enseña a PENSAR, no solo calcular. Escribe tu manifiesto docente. Guíate por él cada clase. Estás listo para enseñar con solvencia.", duration:60, resources:[]},
     ]},
 ];
