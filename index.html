@@ -9615,8 +9615,13 @@ SYNC.init();
 // ============================================================
 if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js').then(reg => {
+    // updateViaCache:'none' → el navegador siempre revisa si hay un sw.js nuevo
+    navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).then(reg => {
       console.log('SW registrado:', reg.scope);
+      // Al volver a la app (desde otra app o pestaña), buscar actualizaciones
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') reg.update().catch(() => {});
+      });
     }).catch(err => {
       console.warn('SW no se pudo registrar:', err);
     });

@@ -1,0 +1,10 @@
+# Solo se publican los archivos de la app. Todo lo demás se queda en la PC
+# (incluida para_claude_web/, que tiene los cursos personales sin cifrar).
+/*
+!/.gitignore
+!/index.html
+!/sw.js
+!/manifest.webmanifest
+!/README.md
+!/icon-192.png
+!/icon-512.png
